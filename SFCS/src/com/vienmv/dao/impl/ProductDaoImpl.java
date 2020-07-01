@@ -32,6 +32,7 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 			ps.setInt(4, product.getCategory().getId());
 			ps.setString(5, product.getDes());
 			ps.executeUpdate();
+			System.out.println(product.getName()+product.getPrice()+product.getImage()+product.getCategory().getId()+product.getDes());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

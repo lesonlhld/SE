@@ -55,7 +55,7 @@ public class UserEditController extends HttpServlet {
 					user.setRoleId(Integer.parseInt(item.getString()));
 				} else if (item.getFieldName().equals("avatar")) {
 					if (item.getSize() > 0) {// neu co file d
-						final String dir = "F:\\upload";
+						final String dir = "D:\\upload";
 						String originalFileName = item.getName();
 						int index = originalFileName.lastIndexOf(".");
 						String ext = originalFileName.substring(index + 1);
