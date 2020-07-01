@@ -18,9 +18,12 @@ public class DownloadImageController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String fileName = req.getParameter("fname");
 
-		final String dir = "D:\\upload";
-
-		File file = new File(dir + "/" + fileName);
+		String root = getServletContext().getRealPath("/");
+		File path = new File(root + "/uploads");
+		if (!path.exists()) {
+			boolean status = path.mkdirs();
+		}
+		File file = new File(path + "/" + fileName);
 
 		resp.setContentType("image/jpeg");
 

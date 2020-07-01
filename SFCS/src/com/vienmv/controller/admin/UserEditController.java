@@ -55,12 +55,16 @@ public class UserEditController extends HttpServlet {
 					user.setRoleId(Integer.parseInt(item.getString()));
 				} else if (item.getFieldName().equals("avatar")) {
 					if (item.getSize() > 0) {// neu co file d
-						final String dir = "D:\\upload";
+						String root = getServletContext().getRealPath("/");
+						File path = new File(root + "/uploads");
+						if (!path.exists()) {
+							boolean status = path.mkdirs();
+						}
 						String originalFileName = item.getName();
 						int index = originalFileName.lastIndexOf(".");
 						String ext = originalFileName.substring(index + 1);
 						String fileName = System.currentTimeMillis() + "." + ext;
-						File file = new File(dir + "/" + fileName);
+						File file = new File(path + "/" + fileName);
 						item.write(file);
 
 						user.setAvatar(fileName);

@@ -136,6 +136,7 @@
 						<form id="sky-form4" class="log-reg-block sky-form"
 							action="register" method="post">
 							<h2>Create New Account</h2>
+							<h3 style="color: red;"> ${alertMsg}</h3>
 
 							<div class="login-input reg-input">
 								<section>

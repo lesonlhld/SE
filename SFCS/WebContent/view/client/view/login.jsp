@@ -139,7 +139,7 @@
 						<form id="sky-form1" class="log-reg-block sky-form" action="login"
 							method="post">
 							<h2>Log in to your account</h2>
-							<h3>${alertMsg}</h3>
+							<h3 style="color: red;"> ${alertMsg}</h3>
 
 
 							<section>
@@ -165,9 +165,6 @@
 									<label class="checkbox"> <input type="checkbox"
 										name="checkbox" /> <i></i> Remember me
 									</label>
-								</div>
-								<div class="col-xs-6 text-right">
-									<a href="#">Forget your Password?</a>
 								</div>
 							</div>
 							<button class="btn-u btn-u-sea-shop btn-block margin-bottom-20"

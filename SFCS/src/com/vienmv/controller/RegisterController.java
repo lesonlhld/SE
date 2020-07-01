@@ -53,13 +53,13 @@ public class RegisterController extends HttpServlet {
 
 		if (service.checkExistEmail(email)) {
 			alertMsg = "Email already exist!";
-			req.setAttribute("alert", alertMsg);
+			req.setAttribute("alertMsg", alertMsg);
 			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
 			return;
 		}
 		if (service.checkExistUsername(username)) {
 			alertMsg = "Username already exist!";
-			req.setAttribute("alert", alertMsg);
+			req.setAttribute("alertMsg", alertMsg);
 			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
 			return;
 		}
@@ -69,11 +69,11 @@ public class RegisterController extends HttpServlet {
 		if (isSuccess) {
 //			SendMail sm= new SendMail();
 //			sm.sendMail(email, "UNIFY", "Welcome to UNIFY. Please Login to use service. Thanks !");
-			req.setAttribute("alert", alertMsg);
+			req.setAttribute("alertMsg", alertMsg);
 			resp.sendRedirect(req.getContextPath() + "/login");
 		} else {
 			alertMsg = "System error!";
-			req.setAttribute("alert", alertMsg);
+			req.setAttribute("alertMsg", alertMsg);
 			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
 		}
 	}
