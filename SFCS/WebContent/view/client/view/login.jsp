@@ -90,7 +90,7 @@
 					Maecenas <span class="shop-green">enim</span> sapien
 				</h1>
 				<ul class="breadcrumb-v4-in">
-					<li><a href="index.html">Home</a></li>
+					<li><a href="/welcome">Home</a></li>
 					<li><a href="">Product</a></li>
 					<li class="active">Log In</li>
 				</ul>
@@ -169,7 +169,6 @@
 							</div>
 							<button class="btn-u btn-u-sea-shop btn-block margin-bottom-20"
 								type="submit">Log in</button>
-
 						</form>
 
 						<div class="margin-bottom-20"></div>

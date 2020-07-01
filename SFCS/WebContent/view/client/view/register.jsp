@@ -162,14 +162,6 @@
 									</label>
 								</section>
 							</div>
-
-							<label class="checkbox margin-bottom-10"> <input
-								type="checkbox" name="checkbox" /> <i></i> Subscribe to our
-								newsletter to get the latest offers
-							</label> <label class="checkbox margin-bottom-20"> <input
-								type="checkbox" name="checkbox" /> <i></i> I have read agreed
-								with the <a href="#">terms &amp; conditions</a>
-							</label>
 							<button class="btn-u btn-u-sea-shop btn-block margin-bottom-20"
 								type="submit">Create Account</button>
 						</form>
