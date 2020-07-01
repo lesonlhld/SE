@@ -100,11 +100,11 @@ CREATE TABLE IF NOT EXISTS `UNIFY`.`sysdiagrams` (
   UNIQUE INDEX `UK_principal_name` (`principal_id` ASC, `name` ASC) VISIBLE);
 SET FOREIGN_KEY_CHECKS = 1;
 
-
+USE unify;
 
 INSERT INTO User(email, username, password,avatar,role_id) VALUES ("","admin","123456","","1");
 INSERT INTO User(email, username, password,avatar,role_id) VALUES ("abc@gmail.com","abc","123456","","2");
 insert into category(cate_id, cate_name) values ("1","men");
-INSERT INTO Product(name, price, image, cate_id, des) VALUES ("dads","123","","1","wadad")
+INSERT INTO Product(name, price, image, cate_id, des) VALUES ("dads","123","","1","wadad");
 
-select * from user
+select * from user;

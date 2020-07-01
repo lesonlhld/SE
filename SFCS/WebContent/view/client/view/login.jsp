@@ -139,7 +139,7 @@
 						<form id="sky-form1" class="log-reg-block sky-form" action="login"
 							method="post">
 							<h2>Log in to your account</h2>
-							<h3>${alertMsg }</h3>
+							<h3>${alertMsg}</h3>
 
 
 							<section>
@@ -173,22 +173,6 @@
 							<button class="btn-u btn-u-sea-shop btn-block margin-bottom-20"
 								type="submit">Log in</button>
 
-							<div class="border-wings">
-								<span>or</span>
-							</div>
-
-							<div class="row columns-space-removes">
-								<div class="col-lg-6 margin-bottom-10">
-									<button type="button" class="btn-u btn-u-md btn-u-fb btn-block">
-										<i class="fa fa-facebook"></i> Facebook Log In
-									</button>
-								</div>
-								<div class="col-lg-6">
-									<button type="button" class="btn-u btn-u-md btn-u-tw btn-block">
-										<i class="fa fa-twitter"></i> Twitter Log In
-									</button>
-								</div>
-							</div>
 						</form>
 
 						<div class="margin-bottom-20"></div>
