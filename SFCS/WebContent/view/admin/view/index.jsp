@@ -90,23 +90,6 @@
 					</div>
 				</div>
 				<!-- /. ROW  -->
-				<hr />
-				<script type="text/javascript"
-					src="http://giavangvn.org/GiavangFullScript/dat-gia-vang/Widgets">
-					
-				</script>
-				<noscript>
-					Vui lòng bật javascript để xem <a href="http://giavangvn.org">giá
-						vàng</a>
-				</noscript>
-				<!-- /. ROW  -->
-				<div class="row">
-
-
-					<div class="col-md-9 col-sm-12 col-xs-12"></div>
-					<div class="col-md-3 col-sm-12 col-xs-12"></div>
-
-				</div>
 
 			</div>
 			<!-- /. ROW  -->
