@@ -68,7 +68,7 @@
 }
 
 .log-reg-v3 .log-reg-block a:hover {
-	color: #18ba9b;
+	color: #d10000;
 }
 
 /*Checkbox style*/
@@ -127,25 +127,25 @@
 }
 
 .log-reg-v3 .checkbox i {
-	border-color: #8bdccd;
+	border-color: #e44040;
 	-ms-transition: border-color 0.3s;
 	-moz-transition: border-color 0.3s;
 	-webkit-transition: border-color 0.3s;
 }
 
 .log-reg-v3 .checkbox:hover i {
-	border-color: #18ba9b;
+	border-color: #d10000;
 }
 
 .log-reg-v3 .checkbox input:focus + i {
-	border-color: #18ba9b;
+	border-color: #d10000;
 }
 
 .log-reg-v3 .checkbox input + i:after {
-	color: #18ba9b;
+	color: #d10000;
 }
 .log-reg-v3 .checkbox input:checked + i {
-	border-color: #18ba9b;	
+	border-color: #d10000;	
 }
 
 .log-reg-v3 .checkbox small {
@@ -153,7 +153,7 @@
 }
 
 .log-reg-v3 .checkbox small a {
-	color: #18ba9b;
+	color: #d10000;
 	font-size: 12px;
 }
 

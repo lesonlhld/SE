@@ -1,11 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <c:url value="/view/client/static" var="url"></c:url>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Product</title>
 <!-- Favicon -->
 <link rel="shortcut icon" href="favicon.ico">
@@ -286,33 +286,29 @@
 									<a href="shop-ui-filter-grid.html"><i class="fa fa-th"></i></a>
 								</li>
 								<li class="sort-list-btn">
-									<h3>Sort By :</h3>
+									<h3>Sắp xếp theo :</h3>
 									<div class="btn-group">
-										<button type="button" class="btn btn-default dropdown-toggle"
-											data-toggle="dropdown">
-											Popularity <span class="caret"></span>
+										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+											Phổ Biến <span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu" role="menu">
-											<li><a href="#">All</a></li>
-											<li><a href="#">Best Sales</a></li>
-											<li><a href="#">Top Last Week Sales</a></li>
-											<li><a href="#">New Arrived</a></li>
+											<li><a href="#">Tất Cả</a></li>
+											<li><a href="#">Bán Chạy</a></li>
+											<li><a href="#">Món mới</a></li>
 										</ul>
 									</div>
 								</li>
 								<li class="sort-list-btn">
-									<h3>Show :</h3>
+									<h3>Hiển thị :</h3>
 									<div class="btn-group">
-										<button type="button" class="btn btn-default dropdown-toggle"
-											data-toggle="dropdown">
+										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> 
 											20 <span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu" role="menu">
-											<li><a href="#">All</a></li>
+											<li><a href="#">Tất Cả</a></li>
 											<li><a href="#">10</a></li>
 											<li><a href="#">5</a></li>
 											<li><a href="#">3</a></li>
-										</ul>
 									</div>
 								</li>
 							</ul>

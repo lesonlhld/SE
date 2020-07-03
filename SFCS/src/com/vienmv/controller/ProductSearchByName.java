@@ -12,16 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 import com.vienmv.model.Product;
 import com.vienmv.service.ProductService;
 import com.vienmv.service.impl.ProductServiceImpl;
-@WebServlet(urlPatterns="/product/category")
-public class ProductSeachByCategory extends HttpServlet {
+@WebServlet(urlPatterns="/product/search")
+public class ProductSearchByName extends HttpServlet {
 	ProductService productService=new ProductServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String cate_id=req.getParameter("cate_id");
-		List<Product> productSeachByCategory =productService.seachByCategory(Integer.parseInt(cate_id));
-		req.setAttribute("productSeachByCategory", productSeachByCategory);
-		req.getRequestDispatcher("/view/client/view/productSeachByCategory.jsp").forward(req, resp);
-		
-		
+		String name=req.getParameter("name");
+		List<Product> productSearchByName =productService.searchByName(name);
+		req.setAttribute("productSearchByName", productSearchByName);
+		req.getRequestDispatcher("/view/client/view/productSearchByName.jsp").forward(req, resp);
 	}
 }

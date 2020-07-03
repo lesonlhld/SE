@@ -10,7 +10,7 @@ public class JDBCConnection {
 		try {
 		    Class.forName("com.mysql.cj.jdbc.Driver");
 		    String hostName = "localhost";
-		    String dbName = "unify";
+		    String dbName = "SFCS";
 		    String userName = "root";
 		    String password = "123456a@";
 		    String connectionURL = "jdbc:mysql://" + hostName + ":3306/" + dbName;

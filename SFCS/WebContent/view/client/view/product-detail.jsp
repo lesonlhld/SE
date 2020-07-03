@@ -1,11 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <c:url value="/view/client/static" var="url"></c:url>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Product Details</title>
 <!-- Favicon -->
 <link rel="shortcut icon" href="favicon.ico">
@@ -152,7 +152,7 @@
 						</ul>
 						<!--/end product color-->
 
-						<h3 class="shop-product-title">Quantity</h3>
+						<h3 class="shop-product-title">Số Lượng</h3>
 						<div class="margin-bottom-40">
 
 							<form name="f1" class="product-quantity sm-margin-bottom-20"
@@ -165,8 +165,7 @@
 								<button type='button' class="quantity-button" name='add'
 									onclick='javascript: document.getElementById("qty").value++;'
 									value='+'>+</button>
-								<button type="submit" class="btn-u btn-u-sea-shop btn-u-lg">Add
-									to Cart</button>
+								<button type="submit" class="btn-u btn-u-sea-shop btn-u-lg">Thêm Vào Giỏ Hàng</button>
 							</form>
 
 
@@ -175,9 +174,7 @@
 
 						<ul class="list-inline add-to-wishlist add-to-wishlist-brd">
 							<li class="wishlist-in"><i class="fa fa-heart"></i> <a
-								href="#">Add to Wishlist</a></li>
-							<li class="compare-in"><i class="fa fa-exchange"></i> <a
-								href="#">Add to Compare</a></li>
+								href="#">Thêm Vào Yêu Thích</a></li>
 						</ul>
 						<p class="wishlist-category">
 							<strong>Categories:</strong> <a href="#">${product.category.name },</a>

@@ -1,11 +1,3 @@
-/*   
- * Template Name: Unify - Responsive Bootstrap Template
- * Description: Business, Corporate, Portfolio, E-commerce and Blog Theme.
- * Version: 1.7
- * Author: @htmlstream
- * Website: http://htmlstream.com
-*/
-
 /*Master Slider
 ------------------------------------*/
 .ms-showcase2-template { 
@@ -164,7 +156,7 @@
 
 #topcontrol:hover {
     color: #fff;
-    background: #18ba9b;
+    background: #d10000;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;

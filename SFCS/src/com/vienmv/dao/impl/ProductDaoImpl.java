@@ -172,7 +172,7 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 	}
 
 	@Override
-	public List<Product> seachByCategory(int cate_id) {
+	public List<Product> searchByCategory(int cate_id) {
 		List<Product> productList = new ArrayList<Product>();
 		String sql = "SELECT product.id, product.name AS p_name, product.price, product.image, product.des , category.cate_name AS c_name, category.cate_id AS c_id 				 FROM Product , Category   where product.cate_id = category.cate_id and Category.cate_id=?";
 		Connection conn = super.getJDBCConnection();
@@ -204,7 +204,7 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 	}
 
 	@Override
-	public List<Product> seachByName(String productName) {
+	public List<Product> searchByName(String productName) {
 		List<Product> productList = new ArrayList<Product>();
 		String sql = "SELECT product.id, product.name AS p_name, product.price, product.image, product.des , category.cate_name AS c_name, category.cate_id AS c_id 				"
 				+ " FROM Product , Category   where product.cate_id = category.cate_id and Product.name like ? ";

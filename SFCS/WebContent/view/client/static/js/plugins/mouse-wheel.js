@@ -4,25 +4,16 @@ var MouseWheel = function () {
 
         initMouseWheel: function () {
             jQuery('.slider-snap').noUiSlider({
-                start: [ 120, 420 ],
+                start: [20, 70],
                 snap: true,
                 connect: true,
                 range: {
                     'min': 0,
-                    '5%': 20,
-                    '10%': 40,
-                    '15%': 80,
-                    '20%': 120,
-                    '25%': 160,
-                    '30%': 200,
-                    '35%': 240,
-                    '40%': 280,
-                    '50%': 300,
-                    '60%': 340,
-                    '70%': 380,
-                    '80%': 420,
-                    '90%': 460,
-                    'max': 500
+                    '20%': 20,
+                    '40%': 50,
+					'60%': 70,
+                    '80%': 100,
+                    'max': 200
                 }
             });
             jQuery('.slider-snap').Link('lower').to(jQuery('.slider-snap-value-lower'));
