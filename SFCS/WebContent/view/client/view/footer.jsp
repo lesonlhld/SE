@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="UTF-8"%>
 
 <div class="footer-v4">
 	<div class="footer">
@@ -8,129 +8,32 @@
 			<div class="row">
 				<!-- About -->
 				<div class="col-md-4 md-margin-bottom-40">
-					<a href="index.html"><img class="footer-logo"
-						src="static/img/logo-2.png" alt=""></a>
-					<p>About Unify dolor sit amet, consectetur adipiscing elit.
-						Maecenas eget nisl id libero tincidunt sodales.</p>
-					<br>
+					<h2 class="thumb-headline">Thông tin liên lạc</h2>
 					<ul class="list-unstyled address-list margin-bottom-20">
-						<li><i class="fa fa-angle-right"></i>Ha Noi - Viet Nam</li>
-						<li><i class="fa fa-angle-right"></i>Phone: 0973.983.546</li>
-						<li><i class="fa fa-angle-right"></i>Hotline: 01299 725 789</li>
-						<li><i class="fa fa-angle-right"></i>Email:
-							maiviensoftware@gmail.com</li>
+						<li><i class="fa fa-angle-right"></i>Đại học Bách Khoa Tp. Hồ Chí Minh, Quận Thủ Đức, Thành phố Hồ Chí Minh</li>
+						<li><i class="fa fa-angle-right"></i>Điện thoại: 0123.456.789</li>
+						<li><i class="fa fa-angle-right"></i>Email: bkfoodcourt@gmail.com</li>
 					</ul>
-
+				</div>
+				
+				<div class="col-md-4 md-margin-bottom-40">
+					<h2 class="thumb-headline">Mạng xã hội</h2>
 					<ul class="list-inline shop-social">
-						<li><a href="#"><i class="fb rounded-md fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="tw rounded-md fa fa-twitter"></i></a></li>
-						<li><a href="#"><i
-								class="gp rounded-md fa fa-google-plus"></i></a></li>
+					
+						<li><a href="#"><i class="fb rounded-md fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a href="#"><i class="in rounded-md fa fa-instagram" aria-hidden="true"></i></a></li>
 						<li><a href="#"><i class="yt rounded-md fa fa-youtube"></i></a></li>
+					</ul>
+				</div>
+				
+				<div class="col-md-4 md-margin-bottom-40">
+					<h2 class="thumb-headline">Thời gian mở cửa</h2>
+					<ul class="list-unstyled address-list margin-bottom-20">
+						<li><i class="fa fa-angle-right"></i>Thứ 2 - Chủ Nhật: 9AM - 8PM</li>
 					</ul>
 				</div>
 				<!-- End About -->
 
-				<!-- Simple List -->
-				<div class="col-md-2 col-sm-3">
-					<div class="row">
-						<div class="col-sm-12 col-xs-6">
-							<h2 class="thumb-headline">Secciones</h2>
-							<ul class="list-unstyled simple-list margin-bottom-20">
-								<li><a href="#">Ultima Hora</a></li>
-								<li><a href="#">Exclusiva</a></li>
-								<li><a href="#">Documentos </a></li>
-								<li><a href="#">Francisco papa</a></li>
-								<li>...</li>
-							</ul>
-						</div>
-
-						<div class="col-sm-12 col-xs-6">
-							<h2 class="thumb-headline">Temas</h2>
-							<ul class="list-unstyled simple-list">
-								<li><a href="#">Ultima Hora</a></li>
-								<li><a href="#">Exclusiva</a></li>
-								<li><a href="#">Documentos </a></li>
-								<li><a href="#">Francisco papa</a></li>
-								<li>...</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-2 col-sm-3">
-					<div class="row">
-						<div class="col-sm-12 col-xs-6">
-							<h2 class="thumb-headline">Utilidades</h2>
-							<ul class="list-unstyled simple-list margin-bottom-20">
-								<li><a href="#">Ultima Hora</a></li>
-								<li><a href="#">Exclusiva</a></li>
-								<li><a href="#">Documentos </a></li>
-								<li>...</li>
-							</ul>
-						</div>
-
-						<div class="col-sm-12 col-xs-6">
-							<h2 class="thumb-headline">Documentos</h2>
-							<ul class="list-unstyled simple-list">
-								<li><a href="#">Ultima Hora</a></li>
-								<li><a href="#">Exclusiva</a></li>
-								<li><a href="#">Documentos </a></li>
-								<li><a href="#">Francisco papa</a></li>
-								<li>...</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-2 col-sm-3">
-					<div class="row">
-						<div class="col-sm-12 col-xs-6">
-							<h2 class="thumb-headline">Publicidad</h2>
-							<ul class="list-unstyled simple-list margin-bottom-20">
-								<li><a href="#">Ultima Hora</a></li>
-								<li><a href="#">Exclusiva</a></li>
-								<li><a href="#">Documentos </a></li>
-								<li><a href="#">Francisco papa</a></li>
-								<li>...</li>
-							</ul>
-						</div>
-
-						<div class="col-sm-12 col-xs-6">
-							<h2 class="thumb-headline">Contacto</h2>
-							<ul class="list-unstyled simple-list">
-								<li><a href="#">Ultima Hora</a></li>
-								<li><a href="#">Exclusiva</a></li>
-								<li><a href="#">Documentos </a></li>
-								<li><a href="#">Francisco papa</a></li>
-								<li>...</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-2 col-sm-3">
-					<div class="row">
-						<div class="col-sm-12 col-xs-6">
-							<h2 class="thumb-headline">Utilidades</h2>
-							<ul class="list-unstyled simple-list margin-bottom-20">
-								<li><a href="#">Ultima Hora</a></li>
-								<li><a href="#">Exclusiva</a></li>
-								<li>...</li>
-							</ul>
-						</div>
-
-						<div class="col-sm-12 col-xs-6">
-							<h2 class="thumb-headline">Documentos</h2>
-							<ul class="list-unstyled simple-list">
-								<li><a href="#">Ultima Hora</a></li>
-								<li><a href="#">Exclusiva</a></li>
-								<li>...</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- End Simple List -->
 			</div>
 			<!--/end row-->
 		</div>
@@ -140,23 +43,11 @@
 
 	<div class="copyright">
 		<div class="container">
-			<div class="row">
 				<div class="col-md-6">
 					<p>
-						2018 &copy; Development by vienmv <a target="_blank"
-							href="https://www.facebook.com/vienmv.th">Htmlstream</a> | <a
-							href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+						All Rights Reserved. © 2020 BK Food Court
 					</p>
 				</div>
-				<div class="col-md-6">
-					<ul class="list-inline sponsors-icons pull-right">
-						<li><i class="fa fa-cc-paypal"></i></li>
-						<li><i class="fa fa-cc-visa"></i></li>
-						<li><i class="fa fa-cc-mastercard"></i></li>
-						<li><i class="fa fa-cc-discover"></i></li>
-					</ul>
-				</div>
-			</div>
 		</div>
 	</div>
 	<!--/copyright-->

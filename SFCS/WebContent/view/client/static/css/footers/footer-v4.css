@@ -1,10 +1,34 @@
 /*Footer-v4
 ------------------------------------*/
 /*Footer*/
-.footer-v4 .footer {
-	padding: 50px 0;
-	background: #151515;
+.footer-v4 .footer{
+  width: 100%;
+  padding: 25px 0;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(../../img/footer-bg.jpg);
 }
+
+.footer-v4 .footer:before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: " ";
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.footer-v4 .container {
+  position: relative;
+}
+
+/* .footer-v4 .footer { */
+/* 	padding: 50px 0; */
+/* 	background: #151515; */
+/* } */
 
 .footer-v4 .footer p {
 	color: #bbb;
@@ -16,7 +40,7 @@
 }
 
 .footer-v4 .address-list li {
-	color: #bbb;
+	color: #eee;
 	margin-bottom: 7px;
 }
 
