@@ -82,94 +82,91 @@
 		<!--=== Breadcrumbs v4 ===-->
 		<div class="breadcrumbs-v4">
 			<div class="container">
-				<span class="page-name">Log In</span>
+				<span class="page-name">Đăng nhập</span>
 				<h1>
-					Maecenas <span class="shop-green">enim</span> sapien
+					<span class="shop-red">SMART FOOD BÁCH KHOA XIN CHÀO</span>
 				</h1>
 				<ul class="breadcrumb-v4-in">
-					<li><a href="../">Home</a></li>
-					<li><a href="">Product</a></li>
-					<li class="active">Log In</li>
+					<li><a href="/welcome">Trang chủ</a></li>
+					<li class="active">Đăng ký</li>
 				</ul>
 			</div>
 			<!--/end container-->
 		</div>
 		<!--=== End Breadcrumbs v4 ===-->
 
-		<!--=== Registre ===-->
+		<!--=== Register ===-->
 		<div class="log-reg-v3 content-md margin-bottom-30">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-7 md-margin-bottom-50">
-						<h2 class="welcome-title">Welcome to Unify</h2>
-						<p>Suspendisse et tincidunt ipsum, et dignissim urna.
-							Vestibulum nisl tortor, gravida at magna et, suscipit vehicula
-							massa.</p>
+						<h2 class="welcome-title">Chào mừng bạn đến với SFCS</h2>
+						<p>SFCS được Trường Đại Học Bách Khoa TP.HCM thiết lập và hoạt động vào tháng 5/2020.</p>
+						<p>BK Food Court sẽ đem cho các bạn những món ăn ngon, bổ dưỡng và an toàn vệ sinh.</p>
 						<br>
 						<div class="row margin-bottom-50">
 							<div class="col-sm-4 md-margin-bottom-20">
 								<div class="site-statistics">
-									<span>20,039</span> <small>Products</small>
+									<span>10+</span> <small>Thương hiệu</small>
 								</div>
 							</div>
 							<div class="col-sm-4 md-margin-bottom-20">
 								<div class="site-statistics">
-									<span>54,283</span> <small>Reviews</small>
+									<span>2345</span> <small>Thành viên</small>
 								</div>
 							</div>
 							<div class="col-sm-4">
 								<div class="site-statistics">
-									<span>376k</span> <small>Sale</small>
+									<span>6h30 - 21h00</span> <small>Giờ hoạt động</small>
 								</div>
 							</div>
 						</div>
 						<div class="members-number">
 							<h3>
-								Join more than <span class="shop-green">13,000</span> members
-								worldwide
+								Địa chỉ (CS1): Sau B4, Lý Thường Kiệt, P.14, Q.10, HCM, TP.Hồ Chí Minh
 							</h3>
-							<img class="img-responsive" src="${url}/img/map.png" alt="">
+							<img class="img-responsive" src="${url}/img/address.png" alt="">
 						</div>
 					</div>
 
 					<div class="col-md-5">
 						<form id="sky-form4" class="log-reg-block sky-form"
 							action="register" method="post">
-							<h2>Create New Account</h2>
+							<h2>Đăng ký thành viên</h2>
 							<h3 style="color: red;"> ${alertMsg}</h3>
 
 							<div class="login-input reg-input">
 								<section>
 									<label class="input"> <input type="text"
-										name="username" placeholder="Username" class="form-control">
+										name="username" placeholder="Tên đăng nhập" class="form-control">
 									</label>
 								</section>
 								<section>
 									<label class="input"> <input type="email" name="email"
-										placeholder="Email address" class="form-control">
+										placeholder="Email" class="form-control">
 									</label>
 								</section>
 								<section>
 									<label class="input"> <input type="password"
-										name="password" placeholder="Password" id="password"
+										name="password" placeholder="Mật khẩu" id="password"
 										class="form-control">
 									</label>
 								</section>
 								<section>
 									<label class="input"> <input type="password"
-										name="passwordConfirm" placeholder="Confirm password"
+										name="passwordConfirm" placeholder="Nhập lại mật khẩu"
 										class="form-control">
 									</label>
 								</section>
 							</div>
 							<button class="btn-u btn-u-sea-shop btn-block margin-bottom-20"
-								type="submit">Create Account</button>
+								type="submit">Tạo tài khoản</button>
 						</form>
 
 						<div class="margin-bottom-20"></div>
 						<p class="text-center">
-							Already you have an account? <a
-								href="${pageContext.request.contextPath }/login">Sign In</a>
+							Đã có tài khoản? <a
+								href="${pageContext.request.contextPath }/login">Đăng nhập</a>
 						</p>
 					</div>
 				</div>
@@ -177,21 +174,19 @@
 			</div>
 			<!--/end container-->
 		</div>
-		<!--=== End Registre ===-->
+		<!--=== End Register ===-->
 
-		<!--=== Shop Suvbscribe ===-->
+		<!--=== Shop Subscribe ===-->
 		<div class="shop-subscribe">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 md-margin-bottom-20">
-						<h2>
-							subscribe to our weekly <strong>newsletter</strong>
-						</h2>
+						<h2>đăng ký để nhận <strong>bản tin hàng tuần</strong> của chúng tôi</h2>
 					</div>
 					<div class="col-md-4">
 						<div class="input-group">
 							<input type="text" class="form-control"
-								placeholder="Email your email..."> <span
+								placeholder="Nhập địa chỉ email..."> <span
 								class="input-group-btn">
 								<button class="btn" type="button">
 									<i class="fa fa-envelope-o"></i>

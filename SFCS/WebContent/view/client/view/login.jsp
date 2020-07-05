@@ -85,14 +85,13 @@
 		<!--=== Breadcrumbs v4 ===-->
 		<div class="breadcrumbs-v4">
 			<div class="container">
-				<span class="page-name">Log In</span>
+				<span class="page-name">Đăng nhập</span>
 				<h1>
-					Maecenas <span class="shop-green">enim</span> sapien
+					<span class="shop-red">SMART FOOD BÁCH KHOA XIN CHÀO</span>
 				</h1>
 				<ul class="breadcrumb-v4-in">
-					<li><a href="/welcome">Home</a></li>
-					<li><a href="">Product</a></li>
-					<li class="active">Log In</li>
+					<li><a href="/welcome">Trang chủ</a></li>
+					<li class="active">Đăng nhập</li>
 				</ul>
 			</div>
 			<!--/end container-->
@@ -102,43 +101,11 @@
 		<!--=== Login ===-->
 		<div class="log-reg-v3 content-md">
 			<div class="container">
-				<div class="row">
-					<div class="col-md-7 md-margin-bottom-50">
-						<h2 class="welcome-title">Welcome to Unify</h2>
-						<p>Suspendisse et tincidunt ipsum, et dignissim urna.
-							Vestibulum nisl tortor, gravida at magna et, suscipit vehicula
-							massa.</p>
-						<br>
-						<div class="info-block-v2">
-							<i class="icon icon-layers"></i>
-							<div class="info-block-in">
-								<h3>Pellentesque vulputate</h3>
-								<p>Vestibulum non ex volutpat, sodales diam sit amet, semper
-									nunc. Integer sed nibh commodo, tincidunt nisi.</p>
-							</div>
-						</div>
-						<div class="info-block-v2">
-							<i class="icon icon-settings"></i>
-							<div class="info-block-in">
-								<h3>Curabitur tincidunt</h3>
-								<p>Vestibulum non ex volutpat, sodales diam sit amet, semper
-									nunc. Integer sed nibh commodo, tincidunt nisi.</p>
-							</div>
-						</div>
-						<div class="info-block-v2">
-							<i class="icon icon-paper-plane"></i>
-							<div class="info-block-in">
-								<h3>Aenean condimentum</h3>
-								<p>Vestibulum non ex volutpat, sodales diam sit amet, semper
-									nunc. Integer sed nibh commodo, tincidunt nisi.</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-5">
+				<div class="row_new">
+					<div>
 						<form id="sky-form1" class="log-reg-block sky-form" action="login"
 							method="post">
-							<h2>Log in to your account</h2>
+							<h2>ĐĂNG NHẬP</h2>
 							<h3 style="color: red;"> ${alertMsg}</h3>
 
 
@@ -146,7 +113,7 @@
 								<label class="input login-input">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-user"></i></span>
-										<input type="text" placeholder="User name" name="username"
+										<input type="text" placeholder="Tên đăng nhập" name="username"
 											class="form-control">
 									</div>
 								</label>
@@ -155,7 +122,7 @@
 								<label class="input login-input no-border-top">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-										<input type="password" placeholder="Password" name="password"
+										<input type="password" placeholder="Mật khẩu" name="password"
 											class="form-control">
 									</div>
 								</label>
@@ -168,13 +135,13 @@
 								</div>
 							</div>
 							<button class="btn-u btn-u-sea-shop btn-block margin-bottom-20"
-								type="submit">Log in</button>
+								type="submit">Đăng nhập</button>
 						</form>
 
 						<div class="margin-bottom-20"></div>
 						<p class="text-center">
-							Don't have account yet? Learn more and <a
-								href="${pageContext.request.contextPath }/register">Sign Up</a>
+							Chưa có tài khoản? <a
+								href="${pageContext.request.contextPath }/register">Đăng ký</a>
 						</p>
 					</div>
 				</div>

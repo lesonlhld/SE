@@ -698,11 +698,10 @@
 					<div class="col-md-8 md-margin-bottom-20">
 						<h2>đăng ký để nhận <strong>bản tin hàng tuần</strong> của chúng tôi</h2>
 					</div>
-					</div>
 					<div class="col-md-4">
 						<div class="input-group">
 							<input type="text" class="form-control"
-								placeholder="Email your email..."> <span
+								placeholder="Nhập địa chỉ email..."> <span
 								class="input-group-btn">
 								<button class="btn" type="button">
 									<i class="fa fa-envelope-o"></i>

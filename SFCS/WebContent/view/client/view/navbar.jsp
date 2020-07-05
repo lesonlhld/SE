@@ -1,6 +1,6 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
       <c:url value="/view/client/static" var="url"></c:url>
       
  <div class="navbar navbar-default mega-menu" role="navigation">
@@ -14,7 +14,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="${pageContext.request.contextPath }">
-                        <img id="logo-header" src="${url}/img/logo.png" alt="Logo">
+                        <img id="logo-header" src="${url}/img/logo.png" alt="Logo", style="width:120px; height:50px;">
                     </a>
                 </div>
 
@@ -26,92 +26,26 @@
 
                     <!-- Nav Menu -->
                     <ul class="nav navbar-nav">
-                        <!-- Pages -->
-                        <li class="dropdown active">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
-                                Pages
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="${pageContext.request.contextPath }">Index</a></li>
-                                <li><a href="${pageContext.request.contextPath }/product/list">Product Page</a></li>
-                                <li><a href="${pageContext.request.contextPath }/product/list">Filter Grid Page</a></li>
-                                <li><a href="${pageContext.request.contextPath }/member/cart">Cart</a></li>
-                                <li><a href="${pageContext.request.contextPath }/member/order">Checkout</a></li>
-                                <li><a href="${pageContext.request.contextPath }/login">Login</a></li>
-                                <li class="active"><a href="${pageContext.request.contextPath }/register">Register</a></li>
-                            </ul>
-                        </li>
-                        <!-- End Pages -->
+                        <!-- Trang chủ -->
+                        <li><a href="${pageContext.request.contextPath }">Trang chủ</a></li>
+                        <!-- End Trang chủ -->
 
-                        <!-- Promotion -->
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
-                                Promotion
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-submenu">
-                                    <a href="javascript:void(0);">Jeans</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Skinny Jeans</a></li>
-                                        <li><a href="#">Bootcut Jeans</a></li>
-                                        <li><a href="#">Straight Cut Jeans</a></li>
-                                    </ul>    
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a href="javascript:void(0);">Shoes</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Sandals</a></li>
-                                        <li><a href="#">Heels</a></li>
-                                    </ul>    
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- End Promotion -->
+                        <!-- Khuyến mãi -->
+                        <li><a href="${pageContext.request.contextPath }">Khuyến mãi</a></li>
+                        <!-- End Khuyến mãi -->
 
-                        <!-- Gifts -->
+                        <!-- Menu -->
                         <li class="dropdown mega-menu-fullwidth">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
-                                Gifts
+                                Thực đơn
                             </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <div class="mega-menu-content">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-md-3 col-sm-12 col-xs-12 md-margin-bottom-30">
-                                                    <h3 class="mega-menu-heading">Pellentes que nec diam lectus</h3>
-                                                    <p>Proin pulvinar libero quis auctor pharet ra. Aenean fermentum met us orci, sedf eugiat augue pulvina r vitae. Nulla dolor nisl, molestie nec aliquam vitae, gravida sodals dolor...</p>
-                                                    <button type="button" class="btn-u btn-u-dark">Read More</button>
-                                                </div>
-                                                <div class="col-md-3 col-sm-4 col-xs-4 md-margin-bottom-30">
-                                                    <a href="#"><img class="product-offers img-responsive" src="${url}/img/blog/01.jpg" alt=""></a>
-                                                </div>
-                                                <div class="col-md-3 col-sm-4 col-xs-4 sm-margin-bottom-30">
-                                                    <a href="#"><img class="product-offers img-responsive" src="${url}/img/blog/02.jpg" alt=""></a>
-                                                </div>
-                                                <div class="col-md-3 col-sm-4 col-xs-4">
-                                                    <a href="#"><img class="product-offers img-responsive" src="${url}/img/blog/03.jpg" alt=""></a>
-                                                </div>
-                                            </div><!--/end row-->
-                                        </div><!--/end container-->
-                                    </div><!--/end mega menu content-->  
-                                </li>
-                            </ul><!--/end dropdown-menu-->
-                        </li>
-                        <!-- End Gifts -->
-
-                        <!-- Books -->
-                        <li class="dropdown mega-menu-fullwidth">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
-                                Books
-                            </a>
-                            <ul class="dropdown-menu">
+                             <ul class="dropdown-menu">
                                 <li>
                                     <div class="mega-menu-content">
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-2 col-sm-6">
-                                                    <h3 class="mega-menu-heading">Clothe</h3>
+                                                    <h3 class="mega-menu-heading">Ẩm thực Việt</h3>
                                                     <ul class="list-unstyled style-list">
                                                         <li><a href="#">New in</a></li>
                                                         <li><a href="#">Coats &amp; Jackets</a></li>
@@ -121,40 +55,21 @@
                                                         <li><a href="#">Skirts</a></li>
                                                         <li><a href="#">T-Shirts</a></li>
                                                     </ul>
-                                                    <h3 class="mega-menu-heading">Shoes</h3>
-                                                    <ul class="list-unstyled style-list">
-                                                        <li><a href="#">Boots</a></li>
-                                                        <li><a href="#">FLats</a></li>
-                                                        <li><a href="#">Heels</a></li>
-                                                        <li><a href="#">Sandals</a></li>
-                                                        <li><a href="#">Sports</a></li>
-                                                    </ul>
                                                 </div>
 
                                                 <div class="col-md-2 col-sm-6">
-                                                    <h3 class="mega-menu-heading">Accessories</h3>
+                                                    <h3 class="mega-menu-heading">Thức ăn nhanh</h3>
                                                     <ul class="list-unstyled style-list">
                                                         <li><a href="#">All accessories</a></li>
                                                         <li><a href="#">Bags &amp; Purses</a></li>
                                                         <li><a href="#">Scarvs &amp; Hats</a></li>
                                                         <li><a href="#">Jewellery</a></li>
                                                         <li><a href="#">Fragrance &amp; Beauty</a></li>
-                                                    </ul>
-                                                    <h3 class="mega-menu-heading">Lingerie</h3>
-                                                    <ul class="list-unstyled style-list">
-                                                        <li><a href="#">Linger</a> <span class="label label-danger-shop">New</span></li>
-                                                        <li><a href="#">Slippers</a></li>
-                                                    </ul>
-                                                    <h3 class="mega-menu-heading">Nightwear</h3>
-                                                    <ul class="list-unstyled style-list">
-                                                        <li><a href="#">Nightwear</a></li>
-                                                        <li><a href="#">Socks</a></li>
-                                                        <li><a href="#">Tights</a></li>
-                                                    </ul>
+                                                    </ul>                                                  
                                                 </div>
 
                                                 <div class="col-md-2 col-sm-6">
-                                                    <h3 class="mega-menu-heading">Mixed</h3>
+                                                    <h3 class="mega-menu-heading">Lẩu & Nướng</h3>
                                                     <ul class="list-unstyled style-list">
                                                         <li><a href="#">New in</a></li>
                                                         <li><a href="#">Coats &amp; Jackets</a> <span class="label label-danger-shop">New</span></li>
@@ -174,7 +89,7 @@
                                                 </div>        
 
                                                 <div class="col-md-2 col-sm-6">
-                                                    <h3 class="mega-menu-heading">Clothe</h3>
+                                                    <h3 class="mega-menu-heading">Thức uống</h3>
                                                     <ul class="list-unstyled style-list">
                                                         <li><a href="#">New in</a></li>
                                                         <li><a href="#">Coats &amp; Jackets</a></li>
@@ -184,40 +99,21 @@
                                                         <li><a href="#">Skirts</a></li>
                                                         <li><a href="#">T-shirts</a></li>
                                                     </ul>
-                                                    <h3 class="mega-menu-heading">Shoes</h3>
-                                                    <ul class="list-unstyled style-list">
-                                                        <li><a href="#">Boots</a></li>
-                                                        <li><a href="#">Flats</a></li>
-                                                        <li><a href="#">Heels</a></li>
-                                                        <li><a href="#">Sandals</a></li>
-                                                        <li><a href="#">Sports</a></li>
-                                                    </ul>
                                                 </div>
 
                                                 <div class="col-md-2 col-sm-6">
-                                                    <h3 class="mega-menu-heading">Accessories</h3>
+                                                    <h3 class="mega-menu-heading">Tráng miệng</h3>
                                                     <ul class="list-unstyled style-list">
                                                         <li><a href="#">All accessories</a></li>
                                                         <li><a href="#">Bags &amp; Purses</a></li>
                                                         <li><a href="#">Scarvs &amp; Hats</a></li>
                                                         <li><a href="#">Jewellery</a></li>
                                                         <li><a href="#">Fragrance &amp; Beauty</a></li>
-                                                    </ul>
-                                                    <h3 class="mega-menu-heading">Lingerie</h3>
-                                                    <ul class="list-unstyled style-list">
-                                                        <li><a href="#">Linger</a> <span class="label label-danger-shop">New</span></li>
-                                                        <li><a href="#">Slippers</a></li>
-                                                    </ul>
-                                                    <h3 class="mega-menu-heading">Nightwear</h3>
-                                                    <ul class="list-unstyled style-list">
-                                                        <li><a href="#">Nightwear</a></li>
-                                                        <li><a href="#">Socks</a></li>
-                                                        <li><a href="#">Tights</a></li>
-                                                    </ul>
+                                                    </ul>                                                    
                                                 </div>
 
                                                 <div class="col-md-2 col-sm-6">
-                                                    <h3 class="mega-menu-heading">Mixed</h3>
+                                                    <h3 class="mega-menu-heading">Các món khác</h3>
                                                     <ul class="list-unstyled style-list">
                                                         <li><a href="#">New in</a></li>
                                                         <li><a href="#">Coats &amp; Jackets</a> <span class="label label-danger-shop">New</span></li>
@@ -240,25 +136,13 @@
                                     </div><!--/end mega menu content-->  
                                 </li>
                             </ul><!--/end dropdown-menu-->
-                        </li>
-                        <!-- End Books -->
 
-                        <!-- Clothes -->
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" data-delay="1000">
-                                Clothes
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="http://localhost:8080/UNIFY/product/category?cate_id=1">Men</a></li>
-                                <li><a href="http://localhost:8080/UNIFY/product/category?cate_id=2">WOMEN</a></li>
-                                <li><a href="http://localhost:8080/UNIFY/product/category?cate_id=3">CHILDREN</a></li>
-                            </ul>
                         </li>
-                        <!-- End Clothes -->
-
-                        <!-- Main Demo -->
-                        <li><a href="${pageContext.request.contextPath }">Main Demo</a></li>
-                        <!-- Main Demo -->
+                        <!-- End Menu -->
+                        
+                        <!-- About us -->
+                        <li><a href="${pageContext.request.contextPath }">About us</a></li>
+                        <!-- About us -->
                     </ul>
                     <!-- End Nav Menu -->                    
                 </div>

@@ -2,7 +2,8 @@
 -- MySQL Workbench Migration
 -- Migrated Schemata: SFCS
 -- Source Schemata: SFCS
--- Created: Wed Jul  1 09:48:12 2020
+-- Created: Wed Jul 1 09:48:12 2020
+-- Latest Edited: Sat Jul 5 2:00:00 2020
 -- Workbench Version: 8.0.20
 -- ----------------------------------------------------------------------------
 
@@ -11,100 +12,224 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------------------------------------------------------
 -- Schema SFCS
 -- ----------------------------------------------------------------------------
-DROP SCHEMA IF EXISTS `SFCS` ;
-CREATE SCHEMA IF NOT EXISTS `SFCS` ;
+
+DROP DATABASE IF EXISTS `SFCS`;
+CREATE DATABASE `SFCS`;
+USE `SFCS`;
 
 -- ----------------------------------------------------------------------------
--- Table SFCS.User
+-- Table SFCS.customers
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SFCS`.`User` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(50) NULL,
-  `username` VARCHAR(50) NOT NULL,
-  `password` VARCHAR(36) NOT NULL,
-  `avatar` VARCHAR(50) NULL,
-  `role_id` INT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `UQ__User__F3DBC5720E56BA47` (`username` ASC) VISIBLE);
+
+CREATE TABLE `SFCS`.`customers` (
+	`customer_id` int(11) NOT NULL AUTO_INCREMENT,
+	`first_name` varchar(255) NOT NULL,
+	`last_name` varchar(255) NOT NULL,
+	`birth_date` date DEFAULT NULL,
+    `gender` enum('M','F') NOT NULL,
+	`phone` varchar(50) DEFAULT NULL,
+	`email` varchar(50) DEFAULT NULL,
+	`address` varchar(2000) DEFAULT NULL,
+	`username` varchar(50) NOT NULL,
+	`password` varchar(50) NOT NULL,
+	`avatar`varchar(50) DEFAULT NULL,
+	`role_id` tinyint(4) NOT NULL DEFAULT '2',
+	PRIMARY KEY (`customer_id`),
+	UNIQUE INDEX `UQ_username` (`username` ASC) VISIBLE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO customers (first_name, last_name, gender, username, password, role_id) 
+VALUES ('quy', 'nguyen', 'M', 'admin', '123456', 1);
 
 -- ----------------------------------------------------------------------------
--- Table SFCS.Category
+-- Table SFCS.stalls
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SFCS`.`Category` (
-  `cate_id` INT NOT NULL AUTO_INCREMENT,
-  `cate_name` VARCHAR(255) CHARACTER SET 'utf8mb4' NOT NULL,
-  PRIMARY KEY (`cate_id`));
+
+CREATE TABLE `SFCS`.`stalls` (
+	`stall_id` int(11) NOT NULL AUTO_INCREMENT,
+	`name` varchar(255) NOT NULL,
+    `item` tinyint(4) NOT NULL DEFAULT '0',
+	`description` varchar(2000) DEFAULT NULL,
+	`image` varchar(50) DEFAULT NULL,
+	PRIMARY KEY (`stall_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO stalls (name, item) 
+VALUES 
+	('Cơm Nguyên Ký', 5), 
+    ('Phở 10 Lý Quốc Sư', 10),
+    ('Hoàng Yến Cuisine', 15),
+    ('KFC', 20),
+    ('Pizza Hut', 18),
+    ("McDonald's", 11),
+    ('Hotto', 22),
+    ('Hanuri', 22),
+    ('Tous Les Jours', 37),
+    ('The Royal Tea', 32),
+    ('Phúc Long Coffee & Tea', 35), 
+    ('Trà sữa Toco Toco', 30);
+    
+-- ----------------------------------------------------------------------------
+-- Table SFCS.categories
+-- ----------------------------------------------------------------------------
+
+CREATE TABLE `SFCS`.`categories` (
+	`category_id` tinyint(4) NOT NULL AUTO_INCREMENT,
+	`name` varchar(50) NOT NULL,
+	PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO categories (name)
+VALUES ('Ẩm thực Việt'), ('Thức ăn nhanh'), ('Lẩu & Nướng'), ('Món tráng miệng'), ('Thức uống'), ('Khác');
 
 -- ----------------------------------------------------------------------------
--- Table SFCS.Product
+-- Table SFCS.products
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SFCS`.`Product` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) CHARACTER SET 'utf8mb4' NOT NULL,
-  `price` DOUBLE NULL,
-  `cate_id` INT NOT NULL,
-  `des` VARCHAR(2000) NULL,
-  `image` VARCHAR(50) NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `FK__Product__cate_id__15502E78`
-    FOREIGN KEY (`cate_id`)
-    REFERENCES `SFCS`.`Category` (`cate_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+
+CREATE TABLE `SFCS`.`products` (
+	`product_id` int(11) NOT NULL AUTO_INCREMENT,
+	`name` varchar(255) NOT NULL,
+	`price` decimal(10,0) NOT NULL,
+	`quantity` int(11) NOT NULL,
+	`discount` tinyint(2) DEFAULT '0',
+	`category_id` tinyint(4) NOT NULL,
+	`stall_id` int(11) NOT NULL,
+	`description` varchar(2000) DEFAULT NULL,
+	`image` varchar(50) DEFAULT NULL,
+	PRIMARY KEY (`product_id`),
+	KEY `fk_products_categories_idx` (`category_id`),
+	KEY `fk_products_stalls_idx` (`stall_id`),
+	CONSTRAINT `fk_products_categories`
+		FOREIGN KEY (`category_id`) REFERENCES `SFCS`.`categories` (`category_id`) ON UPDATE CASCADE,
+	CONSTRAINT `fk_products_stalls`
+		FOREIGN KEY (`stall_id`) REFERENCES `SFCS`.`stalls` (`stall_id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO products (name, price, quantity, discount, category_id, stall_id, image) 
+VALUES 
+	('Phở Bò Tái Chín', 60000, 50, 20, 1, 2, '../img/phobo.jpg'),
+	('Cơm Gà Xối Mỡ', 25000, 40, DEFAULT, 1, 1, '../img/comga.jpg'),
+    ('Kimbap', 35000, 40, DEFAULT, 6, 8, '../img/kimbap.jpg'),
+    ('Lẩu Cua Cà Ri', 73000, 20, 10, 3, 3, '../img/laucua.jpg'),
+    ('Bò Ba Chỉ Với Trứng', 99000, 30, 25, 6, 7, '../img/bobachi.jpg'),
+    ('Combo Gà Giòn Cay', 81000, 30, 10, 2, 4, '../img/gagion.jpg'),
+    ('Pizza Hải Sản', 53000, 35, 15, 2, 5, '../img/pizza.jpg'),
+    ('Burger Bò Phô Mai', 40000, 60, DEFAULT, 2, 6, '../img/burger.jpg'),
+    ('Bánh Crepe Chuối', 39000, 35, DEFAULT, 4, 9, '../img/crepe.jpg'),
+    ('Trà Đào Cam Sả', 45000, 40, DEFAULT, 5, 10, '../img/tradaocamsa.jpg'),
+    ('Trà Sữa Phúc Long (Lạnh)', 45000, 60, DEFAULT, 5, 11, '../img/trasuaphuclong.jpg'),
+    ('Sữa Tươi Trân Châu Đường Hổ', 49000, 45, 28, 5, 12, '../img/suatuoitoco.jpg');
+    
+-- ----------------------------------------------------------------------------
+-- Table SFCS.order_statuses
+-- ----------------------------------------------------------------------------
+
+CREATE TABLE `order_statuses` (
+  `order_status_id` tinyint(4) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`order_status_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO `order_statuses` 
+VALUES (1, 'Đang Xử Lý'), (2, 'Đã Sẵn Sàng'), (3, 'Hết Hàng'), (4, 'Đã Nhận Hàng');
 
 -- ----------------------------------------------------------------------------
--- Table SFCS.Cart
+-- Table SFCS.orders
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SFCS`.`Cart` (
-  `id` VARCHAR(50) NOT NULL,
-  `u_id` INT NOT NULL,
-  `buyDate` DATE NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `FK__Cart__u_id__182C9B23`
-    FOREIGN KEY (`u_id`)
-    REFERENCES `SFCS`.`User` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+
+CREATE TABLE `SFCS`.`orders` (
+	`order_id` int(11) NOT NULL AUTO_INCREMENT,
+	`customer_id` int(11) NOT NULL,
+	`order_date` date NOT NULL,
+	`status` tinyint(4) NOT NULL DEFAULT '1',
+	PRIMARY KEY (`order_id`),
+    KEY `fk_orders_customers_idx` (`customer_id`),
+    KEY `fk_orders_order_statuses_idx` (`status`),
+	CONSTRAINT `fk_orders_customers`
+		FOREIGN KEY (`customer_id`) REFERENCES `SFCS`.`customers` (`customer_id`) ON UPDATE CASCADE,
+	CONSTRAINT `fk_orders_order_statuses` 
+		FOREIGN KEY (`status`) REFERENCES `SFCS`.`order_statuses` (`order_status_id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------------------------------------------------------
--- Table SFCS.CartItem
+-- Table SFCS.order_items
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SFCS`.`CartItem` (
-  `id` VARCHAR(50) NOT NULL,
-  `quantity` INT NULL,
-  `unitPrice` DOUBLE NULL,
-  `pro_id` INT NOT NULL,
-  `cat_id` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `FK__CartItem__pro_id__1B0907CE`
-    FOREIGN KEY (`pro_id`)
-    REFERENCES `SFCS`.`Product` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `FK__CartItem__cat_id__1BFD2C07`
-    FOREIGN KEY (`cat_id`)
-    REFERENCES `SFCS`.`Cart` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+
+CREATE TABLE `SFCS`.`order_items` (
+	`order_id` int(11) NOT NULL AUTO_INCREMENT,
+	`product_id` int(11) NOT NULL,
+	`quantity` int(11) NOT NULL,
+	`unit_price` decimal(10,0) NOT NULL,
+	PRIMARY KEY (`order_id`,`product_id`),
+	KEY `fk_order_items_products_idx` (`product_id`),
+	CONSTRAINT `fk_order_items_orders` 
+		FOREIGN KEY (`order_id`) REFERENCES `SFCS`.`orders` (`order_id`) ON UPDATE CASCADE,
+	CONSTRAINT `fk_order_items_products` 
+		FOREIGN KEY (`product_id`) REFERENCES `SFCS`.`products` (`product_id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------------------------------------------------------
--- Table SFCS.sysdiagrams
+-- Table SFCS.invoices
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SFCS`.`sysdiagrams` (
-  `name` VARCHAR(160) NOT NULL,
-  `principal_id` INT NOT NULL,
-  `diagram_id` INT NOT NULL,
-  `version` INT NULL,
-  `definition` LONGBLOB NULL,
-  PRIMARY KEY (`diagram_id`),
-  UNIQUE INDEX `UK_principal_name` (`principal_id` ASC, `name` ASC) VISIBLE);
-SET FOREIGN_KEY_CHECKS = 1;
 
-USE SFCS;
+CREATE TABLE `invoices` (
+	`invoice_id` int(11) NOT NULL,
+	`customer_id` int(11) NOT NULL,
+	`invoice_total` decimal(10,0) NOT NULL DEFAULT '0',
+	`invoice_date` date NOT NULL,
+	PRIMARY KEY (`invoice_id`),
+	KEY `fk_invoices_customers_idx` (`customer_id`),
+	CONSTRAINT `fk_invoices_customers` 
+		FOREIGN KEY (`customer_id`) REFERENCES `SFCS`.`customers` (`customer_id`) 
+        ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO User(email, username, password, avatar, role_id) VALUES ("", "admin", "123456", "", "1");
-INSERT INTO User(email, username, password, avatar, role_id) VALUES ("abc@gmail.com", "abc", "123456", "", "2");
-insert into category(cate_id, cate_name) values ("1", "men");
-INSERT INTO Product(name, price, image, cate_id, des) VALUES ("dads", "123", "", "1", "wadad");
+-- ----------------------------------------------------------------------------
+-- Table SFCS.payment_methods
+-- ----------------------------------------------------------------------------
 
-SELECT * FROM USER;
+CREATE TABLE `payment_methods` (
+	`payment_method_id` tinyint(4) NOT NULL AUTO_INCREMENT,
+	`name` varchar(50) NOT NULL,
+	PRIMARY KEY (`payment_method_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO `payment_methods` 
+VALUES (1, 'Tài Khoản SFCS'), (2, 'Ví Momo'), (3, 'ViettelPay'), (4, 'Paypal');
+
+-- ----------------------------------------------------------------------------
+-- Table SFCS.payments
+-- ----------------------------------------------------------------------------
+
+CREATE TABLE `payments` (
+	`payment_id` int(11) NOT NULL AUTO_INCREMENT,
+	`customer_id` int(11) NOT NULL,
+	`invoice_id` int(11) NOT NULL,
+	`date` date NOT NULL,
+	`amount` decimal(10,0) NOT NULL,
+	`payment_method` tinyint(4) NOT NULL,
+	PRIMARY KEY (`payment_id`),
+	KEY `fk_payments_customers_idx` (`customer_id`),
+	KEY `fk_payments_invoices_idx` (`invoice_id`),
+	KEY `fk_payments_payment_methods_idx` (`payment_method`),
+	CONSTRAINT `fk_payments_customers` 
+		FOREIGN KEY (`customer_id`) REFERENCES `SFCS`.`customers` (`customer_id`) ON UPDATE CASCADE,
+	CONSTRAINT `fk_payments_invoices` 
+		FOREIGN KEY (`invoice_id`) REFERENCES `SFCS`.`invoices` (`invoice_id`) ON UPDATE CASCADE,
+	CONSTRAINT `fk_payments_payment_methods` 
+		FOREIGN KEY (`payment_method`) REFERENCES `SFCS`.`payment_methods` (`payment_method_id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------------------------------------------------------
+-- Table SFCS.recharges
+-- ----------------------------------------------------------------------------
+
+CREATE TABLE `recharges` (
+	`recharge_id` int(11) NOT NULL AUTO_INCREMENT,
+	`customer_id` int(11) NOT NULL,
+	`invoice_id` int(11) NOT NULL,
+	`date` date NOT NULL,
+	`amount` decimal(10,0) NOT NULL,
+	PRIMARY KEY (`recharge_id`),
+	KEY `fk_recharges_customers_idx` (`customer_id`),
+	KEY `fk_recharges_invoices_idx` (`invoice_id`),
+	CONSTRAINT `fk_recharges_customers` 
+		FOREIGN KEY (`customer_id`) REFERENCES `SFCS`.`customers` (`customer_id`) ON UPDATE CASCADE,
+	CONSTRAINT `fk_recharges_invoices` 
+		FOREIGN KEY (`invoice_id`) REFERENCES `SFCS`.`invoices` (`invoice_id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
