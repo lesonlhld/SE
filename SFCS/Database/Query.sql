@@ -18,11 +18,22 @@ CREATE DATABASE `SFCS`;
 USE `SFCS`;
 
 -- ----------------------------------------------------------------------------
--- Table SFCS.customers
+-- Table SFCS.roles
 -- ----------------------------------------------------------------------------
 
-CREATE TABLE `SFCS`.`customers` (
-	`customer_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `SFCS`.`roles` (
+	`role_id` tinyint(4) NOT NULL AUTO_INCREMENT,
+    `name` varchar(50) NOT NULL,
+    PRIMARY KEY (`role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO roles VALUES (1, 'admin'), (2, 'user'), (3, 'cook'), (4, 'vendor'), (5, 'manager');
+
+-- ----------------------------------------------------------------------------
+-- Table SFCS.users
+-- ----------------------------------------------------------------------------
+
+CREATE TABLE `SFCS`.`users` (
+	`user_id` int(11) NOT NULL AUTO_INCREMENT,
 	`first_name` varchar(255) NOT NULL,
 	`last_name` varchar(255) NOT NULL,
 	`birth_date` date DEFAULT NULL,
@@ -34,11 +45,24 @@ CREATE TABLE `SFCS`.`customers` (
 	`password` varchar(50) NOT NULL,
 	`avatar`varchar(50) DEFAULT NULL,
 	`role_id` tinyint(4) NOT NULL DEFAULT '2',
-	PRIMARY KEY (`customer_id`),
-	UNIQUE INDEX `UQ_username` (`username` ASC) VISIBLE
+	`balance` int DEFAULT '0',
+	PRIMARY KEY (`user_id`),
+	UNIQUE INDEX `UQ_username` (`username` ASC) VISIBLE,
+    KEY `fk_users__roles_idx` (`role_id`),
+    CONSTRAINT `fk_users_roles`
+		FOREIGN KEY (`role_id`) REFERENCES `SFCS`.`roles` (`role_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-INSERT INTO customers (first_name, last_name, gender, username, password, role_id) 
-VALUES ('quy', 'nguyen', 'M', 'admin', '123456', 1);
+INSERT INTO users (first_name, last_name, gender, username, password, role_id) 
+VALUES 
+	('Quy', 'Nguyen', 'M', 'admin1', '123456', 1),
+    ('Son', 'Le', 'M', 'admin2', '123456', 1),
+    ('Tan', 'Chau', 'M', 'admin3', '123456', 1),
+    ('Minh', 'Ly', 'M', 'admin4', '123456', 1),
+    ('Hung', 'To', 'M', 'admin5', '123456', 1),
+    ('Ans', 'Bean', 'F', 'AB', '123', 3),
+    ('Amelia', 'James', 'F', 'AJ', '123', 3),
+    ('Josh', 'Kaism', 'M', 'JK', 'qwerty', 4),
+    ('Mana', 'Lane', 'F', 'ML', 'qwerty', 5);
 
 -- ----------------------------------------------------------------------------
 -- Table SFCS.stalls
@@ -86,8 +110,8 @@ VALUES ('Ẩm thực Việt'), ('Thức ăn nhanh'), ('Lẩu & Nướng'), ('Mó
 CREATE TABLE `SFCS`.`products` (
 	`product_id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL,
-	`price` decimal(10,0) NOT NULL,
-	`quantity` int(11) NOT NULL,
+	`price` int NOT NULL,
+	`quantity` tinyint(4) NOT NULL,
 	`discount` tinyint(2) DEFAULT '0',
 	`category_id` tinyint(4) NOT NULL,
 	`stall_id` int(11) NOT NULL,
@@ -134,14 +158,14 @@ VALUES (1, 'Đang Xử Lý'), (2, 'Đã Sẵn Sàng'), (3, 'Hết Hàng'), (4, '
 
 CREATE TABLE `SFCS`.`orders` (
 	`order_id` int(11) NOT NULL AUTO_INCREMENT,
-	`customer_id` int(11) NOT NULL,
+	`user_id` int(11) NOT NULL,
 	`order_date` date NOT NULL,
 	`status` tinyint(4) NOT NULL DEFAULT '1',
 	PRIMARY KEY (`order_id`),
-    KEY `fk_orders_customers_idx` (`customer_id`),
+    KEY `fk_orders_users_idx` (`user_id`),
     KEY `fk_orders_order_statuses_idx` (`status`),
-	CONSTRAINT `fk_orders_customers`
-		FOREIGN KEY (`customer_id`) REFERENCES `SFCS`.`customers` (`customer_id`) ON UPDATE CASCADE,
+	CONSTRAINT `fk_orders_users`
+		FOREIGN KEY (`user_id`) REFERENCES `SFCS`.`users` (`user_id`) ON UPDATE CASCADE,
 	CONSTRAINT `fk_orders_order_statuses` 
 		FOREIGN KEY (`status`) REFERENCES `SFCS`.`order_statuses` (`order_status_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -154,7 +178,7 @@ CREATE TABLE `SFCS`.`order_items` (
 	`order_id` int(11) NOT NULL AUTO_INCREMENT,
 	`product_id` int(11) NOT NULL,
 	`quantity` int(11) NOT NULL,
-	`unit_price` decimal(10,0) NOT NULL,
+	`unit_price` int NOT NULL,
 	PRIMARY KEY (`order_id`,`product_id`),
 	KEY `fk_order_items_products_idx` (`product_id`),
 	CONSTRAINT `fk_order_items_orders` 
@@ -169,13 +193,13 @@ CREATE TABLE `SFCS`.`order_items` (
 
 CREATE TABLE `invoices` (
 	`invoice_id` int(11) NOT NULL,
-	`customer_id` int(11) NOT NULL,
-	`invoice_total` decimal(10,0) NOT NULL DEFAULT '0',
+	`user_id` int(11) NOT NULL,
+	`invoice_total` int NOT NULL DEFAULT '0',
 	`invoice_date` date NOT NULL,
 	PRIMARY KEY (`invoice_id`),
-	KEY `fk_invoices_customers_idx` (`customer_id`),
-	CONSTRAINT `fk_invoices_customers` 
-		FOREIGN KEY (`customer_id`) REFERENCES `SFCS`.`customers` (`customer_id`) 
+	KEY `fk_invoices_users_idx` (`user_id`),
+	CONSTRAINT `fk_invoices_users` 
+		FOREIGN KEY (`user_id`) REFERENCES `SFCS`.`users` (`user_id`) 
         ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -197,17 +221,17 @@ VALUES (1, 'Tài Khoản SFCS'), (2, 'Ví Momo'), (3, 'ViettelPay'), (4, 'Paypal
 
 CREATE TABLE `payments` (
 	`payment_id` int(11) NOT NULL AUTO_INCREMENT,
-	`customer_id` int(11) NOT NULL,
+	`user_id` int(11) NOT NULL,
 	`invoice_id` int(11) NOT NULL,
 	`date` date NOT NULL,
-	`amount` decimal(10,0) NOT NULL,
+	`amount` int NOT NULL,
 	`payment_method` tinyint(4) NOT NULL,
 	PRIMARY KEY (`payment_id`),
-	KEY `fk_payments_customers_idx` (`customer_id`),
+	KEY `fk_payments_users_idx` (`user_id`),
 	KEY `fk_payments_invoices_idx` (`invoice_id`),
 	KEY `fk_payments_payment_methods_idx` (`payment_method`),
-	CONSTRAINT `fk_payments_customers` 
-		FOREIGN KEY (`customer_id`) REFERENCES `SFCS`.`customers` (`customer_id`) ON UPDATE CASCADE,
+	CONSTRAINT `fk_payments_users` 
+		FOREIGN KEY (`user_id`) REFERENCES `SFCS`.`users` (`user_id`) ON UPDATE CASCADE,
 	CONSTRAINT `fk_payments_invoices` 
 		FOREIGN KEY (`invoice_id`) REFERENCES `SFCS`.`invoices` (`invoice_id`) ON UPDATE CASCADE,
 	CONSTRAINT `fk_payments_payment_methods` 
@@ -220,15 +244,15 @@ CREATE TABLE `payments` (
 
 CREATE TABLE `recharges` (
 	`recharge_id` int(11) NOT NULL AUTO_INCREMENT,
-	`customer_id` int(11) NOT NULL,
+	`user_id` int(11) NOT NULL,
 	`invoice_id` int(11) NOT NULL,
 	`date` date NOT NULL,
-	`amount` decimal(10,0) NOT NULL,
+	`amount` int NOT NULL,
 	PRIMARY KEY (`recharge_id`),
-	KEY `fk_recharges_customers_idx` (`customer_id`),
+	KEY `fk_recharges_users_idx` (`user_id`),
 	KEY `fk_recharges_invoices_idx` (`invoice_id`),
-	CONSTRAINT `fk_recharges_customers` 
-		FOREIGN KEY (`customer_id`) REFERENCES `SFCS`.`customers` (`customer_id`) ON UPDATE CASCADE,
+	CONSTRAINT `fk_recharges_users` 
+		FOREIGN KEY (`user_id`) REFERENCES `SFCS`.`users` (`user_id`) ON UPDATE CASCADE,
 	CONSTRAINT `fk_recharges_invoices` 
 		FOREIGN KEY (`invoice_id`) REFERENCES `SFCS`.`invoices` (`invoice_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

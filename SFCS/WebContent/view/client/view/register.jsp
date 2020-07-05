@@ -14,6 +14,9 @@
 <link rel='stylesheet' type='text/css'
 	href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
 
+<!-- BOOTSTRAP STYLES-->
+<link href="${url}/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
+
 <!-- CSS Global Compulsory -->
 <link rel="stylesheet"
 	href="${url}/plugins/bootstrap/css/bootstrap.min.css">
@@ -123,7 +126,7 @@
 						</div>
 						<div class="members-number">
 							<h3>
-								Địa chỉ (CS1): Sau B4, Lý Thường Kiệt, P.14, Q.10, HCM, TP.Hồ Chí Minh
+								Địa chỉ: Đại học Bách Khoa Tp. Hồ Chí Minh, Quận Thủ Đức, Thành phố Hồ Chí Minh
 							</h3>
 							<img class="img-responsive" src="${url}/img/address.png" alt="">
 						</div>
@@ -136,15 +139,33 @@
 							<h3 style="color: red;"> ${alertMsg}</h3>
 
 							<div class="login-input reg-input">
+								<div class="row">
+									<div class="col-md-6 md-margin-bottom-50">
+										<section>
+											<label class="input"> <input type="text"
+												name="firstName" placeholder="Họ" class="form-control">
+											</label>
+										</section>
+									</div>
+									<div class="col-md-6 md-margin-bottom-50">
+										<section>
+											<label class="input"> <input type="text"
+												name="lastName" placeholder="Tên" class="form-control">
+											</label>
+										</section>
+									</div>
+								</div>
 								<section>
 									<label class="input"> <input type="text"
 										name="username" placeholder="Tên đăng nhập" class="form-control">
 									</label>
 								</section>
 								<section>
-									<label class="input"> <input type="email" name="email"
-										placeholder="Email" class="form-control">
-									</label>
+									<label>Giới tính</label>
+										<label> <input type="radio" value="M" name="gender"/> Nam
+										</label>
+										<label> <input type="radio" value="F" name="gender"/> Nữ
+										</label>
 								</section>
 								<section>
 									<label class="input"> <input type="password"
@@ -165,8 +186,7 @@
 
 						<div class="margin-bottom-20"></div>
 						<p class="text-center">
-							Đã có tài khoản? <a
-								href="${pageContext.request.contextPath }/login">Đăng nhập</a>
+							Đã có tài khoản? <a href="${pageContext.request.contextPath }/login">Đăng nhập</a>
 						</p>
 					</div>
 				</div>

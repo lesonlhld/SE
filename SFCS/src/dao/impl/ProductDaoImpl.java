@@ -21,7 +21,7 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 
 	@Override
 	public void insert(Product product) {
-		String sql = "INSERT INTO Product(name, price, image, cate_id, des) VALUES (?,?,?,?,?)";
+		String sql = "INSERT INTO products(name, price, image, category_id, description) VALUES (?,?,?,?,?)";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -39,7 +39,7 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 
 	@Override
 	public void edit(Product product) {
-		String sql = "UPDATE Product SET Product.name = ? , price = ?, image = ?,cate_id=?, des=?  WHERE id = ?";
+		String sql = "UPDATE products SET products.name = ? , price = ?, image = ?,category_id=?, description=?  WHERE product_id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -59,7 +59,7 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 
 	@Override
 	public void delete(int id) {
-		String sql = "DELETE FROM Product WHERE id=?";
+		String sql = "DELETE FROM products WHERE product_id=?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -73,8 +73,8 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 
 	@Override
 	public Product get(int id) {
-		String sql = "SELECT product.id, product.name AS p_name, product.price, product.image,product.des, category.cate_name AS c_name, category.cate_id AS c_id "
-				+ "FROM product INNER JOIN category " + "ON product.cate_id = category.cate_id WHERE product.id=?";
+		String sql = "SELECT products.product_id, products.name AS p_name, products.price, products.image, products.description, categories.name AS c_name, categories.category_id AS c_id "
+				+ "FROM products INNER JOIN categories " + "ON products.category_id = categories.category_id WHERE products.product_id=?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -86,11 +86,11 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 				Category category = categortService.get(rs.getInt("c_id"));
 
 				Product product = new Product();
-				product.setId(rs.getInt("id"));
+				product.setId(rs.getInt("product_id"));
 				product.setName(rs.getString("p_name"));
 				product.setPrice(rs.getLong("price"));
 				product.setImage(rs.getString("image"));
-				product.setDes(rs.getString("des"));
+				product.setDes(rs.getString("description"));
 				product.setCategory(category);
 
 				return product;
@@ -106,8 +106,8 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 	public List<Product> getAll() {
 
 		List<Product> productList = new ArrayList<Product>();
-		String sql = "SELECT product.id, product.name AS p_name, product.price, product.image, product.des , category.cate_name AS c_name, category.cate_id AS c_id  "
-				+ "FROM product INNER JOIN category " + "ON product.cate_id = category.cate_id";
+		String sql = "SELECT products.product_id, products.name AS p_name, products.price, products.image, products.description, categories.name AS c_name, categories.category_id AS c_id  "
+				+ "FROM products INNER JOIN categories " + "ON products.category_id = categories.category_id";
 		Connection conn = super.getJDBCConnection();
 
 		try {
@@ -117,11 +117,11 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 			while (rs.next()) {
 				Category category = categortService.get(rs.getInt("c_id"));
 				Product product = new Product();
-				product.setId(rs.getInt("id"));
+				product.setId(rs.getInt("product_id"));
 				product.setName(rs.getString("p_name"));
 				product.setPrice(rs.getLong("price"));
 				product.setImage(rs.getString("image"));
-				product.setDes(rs.getString("des"));
+				product.setDes(rs.getString("description"));
 				product.setCategory(category);
 
 				product.setCategory(category);
@@ -138,7 +138,7 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 	@Override
 	public List<Product> search(String keyword) {
 		List<Product> productList = new ArrayList<Product>();
-		String sql = "SELECT * FROM user WHERE name LIKE ? ";
+		String sql = "SELECT * FROM users WHERE name LIKE ? ";
 		Connection conn = super.getJDBCConnection();
 
 		try {
@@ -149,11 +149,11 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 			while (rs.next()) {
 				Product product = new Product();
 
-				product.setId(rs.getInt("id"));
+				product.setId(rs.getInt("product_id"));
 				product.setName(rs.getString("name"));
 				product.setPrice(rs.getLong("price"));
 				product.setImage(rs.getString("image"));
-				product.setDes(rs.getString("des"));
+				product.setDes(rs.getString("description"));
 
 				Category category = new Category();
 				category.setId(rs.getInt("c_id"));
@@ -174,7 +174,7 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 	@Override
 	public List<Product> searchByCategory(int cate_id) {
 		List<Product> productList = new ArrayList<Product>();
-		String sql = "SELECT product.id, product.name AS p_name, product.price, product.image, product.des , category.cate_name AS c_name, category.cate_id AS c_id 				 FROM Product , Category   where product.cate_id = category.cate_id and Category.cate_id=?";
+		String sql = "SELECT products.product_id, products.name AS p_name, products.price, products.image, products.description , categories.name AS c_name, categories.category_id AS c_id FROM products , categories where products.category_id = categories.category_id and categories.category_id=?";
 		Connection conn = super.getJDBCConnection();
 
 		try {
@@ -185,11 +185,11 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 			while (rs.next()) {
 				Category category = categortService.get(rs.getInt("c_id"));
 				Product product = new Product();
-				product.setId(rs.getInt("id"));
+				product.setId(rs.getInt("product_id"));
 				product.setName(rs.getString("p_name"));
 				product.setPrice(rs.getLong("price"));
 				product.setImage(rs.getString("image"));
-				product.setDes(rs.getString("des"));
+				product.setDes(rs.getString("description"));
 				product.setCategory(category);
 
 				product.setCategory(category);
@@ -206,8 +206,8 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 	@Override
 	public List<Product> searchByName(String productName) {
 		List<Product> productList = new ArrayList<Product>();
-		String sql = "SELECT product.id, product.name AS p_name, product.price, product.image, product.des , category.cate_name AS c_name, category.cate_id AS c_id 				"
-				+ " FROM Product , Category   where product.cate_id = category.cate_id and Product.name like ? ";
+		String sql = "SELECT products.product_id, products.name AS p_name, products.price, products.image, products.description , categories.name AS c_name, categories.category_id AS c_id"
+				+ " FROM products , categories where products.category_id = categories.category_id and products.name like ? ";
 		Connection conn = super.getJDBCConnection();
 
 		try {
@@ -228,12 +228,9 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 				product.setCategory(category);
 				productList.add(product);
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return productList;
 	}
-
 }

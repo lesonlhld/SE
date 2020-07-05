@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <c:url value="/view/admin/static" var="url"></c:url>
 <!DOCTYPE html>
 <html>
@@ -57,7 +57,7 @@
 												<th>ID </th>
 												<th>Image</th>
 												<th>Name</th>
-												<th>Price($)</th>
+												<th>Price</th>
 												<th>Category</th>
 												<th>Description</th>
 												<th>Action </th>

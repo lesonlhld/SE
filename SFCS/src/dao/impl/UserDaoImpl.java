@@ -16,15 +16,15 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 	@Override
 	public void insert(User user) {
 		int roleId=0;
-		String sql = "INSERT INTO customers(email, username, password,avatar,role_id) VALUES (?,?,?,?,?)";
+		String sql = "INSERT INTO users(first_name, last_name, username, password, gender, role_id) VALUES (?,?,?,?,?,?)";
 		Connection con = super.getJDBCConnection();
-
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, user.getEmail());
-			ps.setString(2, user.getUsername());
-			ps.setString(3, user.getPassword());
-			ps.setString(4, user.getAvatar());
+			ps.setString(1, user.getFirstName());
+			ps.setString(2, user.getLastName());
+			ps.setString(3, user.getUsername());
+			ps.setString(4, user.getPassword());
+			ps.setString(5, user.getGender());
 			try {
 				if(user.getRoleId()==1) {
 					roleId=1;
@@ -35,7 +35,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 			} catch (Exception e) {
 				roleId=2;
 			}
-			ps.setInt(5, roleId);
+			ps.setInt(6, roleId);
 			;
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -45,7 +45,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 
 	@Override
 	public void edit(User user) {
-		String sql = "UPDATE customers SET email = ? , username = ?, password = ?, avatar = ?, role_id = ? WHERE id = ?";
+		String sql = "UPDATE users SET email = ? , username = ?, password = ?, avatar = ?, role_id = ? WHERE user_id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -64,7 +64,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 
 	@Override
 	public void delete(int id) {
-		String sql = "DELETE FROM customers WHERE id = ?";
+		String sql = "DELETE FROM users WHERE user_id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -78,7 +78,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 
 	@Override
 	public User get(String username) {
-		String sql = "SELECT * FROM customers WHERE username = ? ";
+		String sql = "SELECT * FROM users WHERE username = ? ";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -89,7 +89,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 			while (rs.next()) {
 				User user = new User();
 
-				user.setId(rs.getInt("customer_id"));
+				user.setId(rs.getInt("user_id"));
 				user.setEmail(rs.getString("email"));
 				user.setUsername(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
@@ -107,7 +107,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 
 	@Override
 	public User get(int id) {
-		String sql = "SELECT * FROM customers WHERE id = ? ";
+		String sql = "SELECT * FROM users WHERE user_id = ? ";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -118,7 +118,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 			while (rs.next()) {
 				User user = new User();
 
-				user.setId(rs.getInt("id"));
+				user.setId(rs.getInt("user_id"));
 				user.setEmail(rs.getString("email"));
 				user.setUsername(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
@@ -137,7 +137,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 	@Override
 	public List<User> getAll() {
 		List<User> userList = new ArrayList<User>();
-		String sql = "SELECT * FROM customers";
+		String sql = "SELECT * FROM users";
 		Connection conn = super.getJDBCConnection();
 
 		try {
@@ -147,7 +147,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 			while (rs.next()) {
 				User user = new User();
 
-				user.setId(rs.getInt("id"));
+				user.setId(rs.getInt("user_id"));
 				user.setEmail(rs.getString("email"));
 				user.setUsername(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
@@ -167,7 +167,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 	@Override
 	public List<User> search(String keyword) {
 		List<User> userList = new ArrayList<User>();
-		String sql = "SELECT * FROM customers WHERE name LIKE ? ";
+		String sql = "SELECT * FROM users WHERE name LIKE ? ";
 		Connection conn = super.getJDBCConnection();
 
 		try {
@@ -199,7 +199,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 		boolean duplicate = false;
 		Connection conn = JDBCConnection.getJDBCConnection();
 		try {
-			String query = "select * from customers where email = ?";
+			String query = "select * from users where email = ?";
 
 			PreparedStatement psmt = conn.prepareStatement(query);
 
@@ -221,7 +221,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 		boolean duplicate = false;
 		Connection conn = JDBCConnection.getJDBCConnection();
 		try {
-			String query = "select * from customers where username = ?";
+			String query = "select * from users where username = ?";
 
 			PreparedStatement psmt = conn.prepareStatement(query);
 

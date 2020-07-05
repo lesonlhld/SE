@@ -27,8 +27,10 @@ public class UserServiceImpl implements UserService {
 		if (newUser.getAvatar() != null) {
 			// XOA ANH CU DI
 			String fileName = oldUser.getAvatar();
+
 			final String dir = "C:\\Users\\mai vien\\eclipse-workspace\\UNIFY\\upload";
 			File file = new File(dir + "/" + fileName);
+
 			if (file.exists()) {
 				file.delete();
 			}
@@ -38,6 +40,7 @@ public class UserServiceImpl implements UserService {
 
 		userDao.edit(oldUser);
 	}
+
 
 	@Override
 	public void delete(int id) {
@@ -75,11 +78,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean register(String username, String password, String email) {
+	public boolean register(String username, String firstName, String lastName, String gender, String password) {
 		if (userDao.checkExistUsername(username)) {
 			return false;
 		}
-		userDao.insert(new User(email, username, password));
+		userDao.insert(new User(username, firstName, lastName, gender, password));
 		return true;
 	}
 	

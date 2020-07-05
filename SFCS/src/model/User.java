@@ -6,23 +6,29 @@ public class User implements Serializable {
 	private int id;
 	private String email;
 	private String username;
+	private String firstName;
+	private String lastName;
 	private String password;
 	private String avatar;
+	private String gender;
 	private int roleId;
 	public User() {
 		super();
 	}
-	public User(String email, String username, String password) {
+	public User(String username, String firstName, String lastName, String gender, String password) {
 		super();
-		this.email = email;
 		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.gender = gender;
 		this.password = password;
 	}
-	public User(int id, String email, String username, String password, String avatar, int roleId) {
+	public User(int id, String email, String firstName, String lastName, String password, String avatar, int roleId) {
 		super();
 		this.id = id;
 		this.email = email;
-		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.password = password;
 		this.avatar = avatar;
 		this.roleId = roleId;
@@ -38,6 +44,18 @@ public class User implements Serializable {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public String getUsername() {
 		return username;
@@ -56,6 +74,12 @@ public class User implements Serializable {
 	}
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	public int getRoleId() {
 		return roleId;

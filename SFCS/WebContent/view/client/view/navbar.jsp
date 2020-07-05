@@ -14,7 +14,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="${pageContext.request.contextPath }">
-                        <img id="logo-header" src="${url}/img/logo.png" alt="Logo", style="width:120px; height:50px;">
+                        <img id="logo-header" src="${url}/img/logo.png" alt="Logo" style="width:120px; height:50px;">
                     </a>
                 </div>
 
@@ -30,13 +30,9 @@
                         <li><a href="${pageContext.request.contextPath }">Trang chủ</a></li>
                         <!-- End Trang chủ -->
 
-                        <!-- Khuyến mãi -->
-                        <li><a href="${pageContext.request.contextPath }">Khuyến mãi</a></li>
-                        <!-- End Khuyến mãi -->
-
                         <!-- Menu -->
                         <li class="dropdown mega-menu-fullwidth">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
+                            <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">
                                 Thực đơn
                             </a>
                              <ul class="dropdown-menu">
@@ -75,16 +71,6 @@
                                                         <li><a href="#">Coats &amp; Jackets</a> <span class="label label-danger-shop">New</span></li>
                                                         <li><a href="#">Jeans</a></li>
                                                         <li><a href="#">Dresses</a></li>
-                                                        <li><a href="#">Shorts</a></li>
-                                                        <li><a href="#">Skirts</a></li>
-                                                        <li><a href="#">T-shirts</a></li>
-                                                        <li><a href="#">Boots</a></li>
-                                                        <li><a href="#">Flats</a></li>
-                                                        <li><a href="#">Heels</a></li>
-                                                        <li><a href="#">Sandals</a></li>
-                                                        <li><a href="#">Sports</a></li>
-                                                        <li><a href="#">Socks</a></li>
-                                                        <li><a href="#">Tights</a></li>
                                                     </ul>
                                                 </div>        
 
@@ -120,12 +106,6 @@
                                                         <li><a href="#">Jeans</a></li>
                                                         <li><a href="#">Dresses</a></li>
                                                         <li><a href="#">Shorts</a></li>
-                                                        <li><a href="#">Skirts</a></li>
-                                                        <li><a href="#">T-shirts</a></li>
-                                                        <li><a href="#">Boots</a></li>
-                                                        <li><a href="#">Flats</a></li>
-                                                        <li><a href="#">Heels</a></li>
-                                                        <li><a href="#">Sandals</a></li>
                                                         <li><a href="#">Sports</a></li>
                                                         <li><a href="#">Socks</a></li>
                                                         <li><a href="#">Tights</a> <span class="label label-danger-shop">New</span></li>
@@ -140,9 +120,13 @@
                         </li>
                         <!-- End Menu -->
                         
-                        <!-- About us -->
-                        <li><a href="${pageContext.request.contextPath }">About us</a></li>
-                        <!-- About us -->
+                        <!-- Khuyến mãi -->
+                        <li><a href="${pageContext.request.contextPath }">Khuyến mãi</a></li>
+                        <!-- End Khuyến mãi -->
+                        
+                        <!-- Về chúng tôi -->
+                        <li><a href="${pageContext.request.contextPath }">Về chúng tôi</a></li>
+                        <!-- Aend Về chúng tôi -->
                     </ul>
                     <!-- End Nav Menu -->                    
                 </div>

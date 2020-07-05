@@ -15,7 +15,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 
 	@Override
 	public void insert(Category category) {
-		String sql = "INSERT INTO category(cate_name) VALUES (?)";
+		String sql = "INSERT INTO categories(name) VALUES (?)";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -29,7 +29,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 
 	@Override
 	public void edit(Category category) {
-		String sql = "UPDATE category SET cate_name = ? WHERE cate_id = ?";
+		String sql = "UPDATE categories SET name = ? WHERE category_id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -44,7 +44,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 
 	@Override
 	public void delete(int id) {
-		String sql = "DELETE FROM category WHERE cate_id = ?";
+		String sql = "DELETE FROM categories WHERE category_id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -58,7 +58,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 
 	@Override
 	public Category get(int id) {
-		String sql = "SELECT * FROM category WHERE cate_id = ? ";
+		String sql = "SELECT * FROM categories WHERE category_id = ? ";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -69,8 +69,8 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 			while (rs.next()) {
 				Category category = new Category();
 
-				category.setId(rs.getInt("cate_id"));
-				category.setName(rs.getString("cate_name"));
+				category.setId(rs.getInt("category_id"));
+				category.setName(rs.getString("name"));
 
 				return category;
 
@@ -84,7 +84,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 	@Override
 	public List<Category> getAll() {
 		List<Category> categories = new ArrayList<Category>();
-		String sql = "SELECT * FROM Category";
+		String sql = "SELECT * FROM categories";
 		Connection conn = super.getJDBCConnection();
 
 		try {
@@ -94,8 +94,8 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 			while (rs.next()) {
 				Category category = new Category();
 
-				category.setId(rs.getInt("cate_id"));
-				category.setName(rs.getString("cate_name"));
+				category.setId(rs.getInt("category_id"));
+				category.setName(rs.getString("name"));
 
 				categories.add(category);
 			}
@@ -110,7 +110,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 	@Override
 	public List<Category> search(String keyword) {
 		List<Category> categories = new ArrayList<Category>();
-		String sql = "SELECT * FROM category WHERE name LIKE ? ";
+		String sql = "SELECT * FROM categories WHERE name LIKE ? ";
 		Connection conn = super.getJDBCConnection();
 
 		try {
@@ -136,7 +136,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 
 	@Override
 	public Category get(String name) {
-		String sql = "SELECT * FROM Category WHERE cate_name = ? ";
+		String sql = "SELECT * FROM categories WHERE name = ? ";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -147,8 +147,8 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 			while (rs.next()) {
 				Category category = new Category();
 
-				category.setId(rs.getInt("cate_id"));
-				category.setName(rs.getString("cate_name"));
+				category.setId(rs.getInt("category_id"));
+				category.setName(rs.getString("name"));
 
 				return category;
 

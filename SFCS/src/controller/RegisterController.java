@@ -46,17 +46,13 @@ public class RegisterController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
-		String email = req.getParameter("email");
+		String firstName = req.getParameter("firstName");
+		String lastName = req.getParameter("lastName");
+		String gender = req.getParameter("gender");
 
 		UserService service = new UserServiceImpl();
 		String alertMsg = "";
 
-		if (service.checkExistEmail(email)) {
-			alertMsg = "Email already exist!";
-			req.setAttribute("alertMsg", alertMsg);
-			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
-			return;
-		}
 		if (service.checkExistUsername(username)) {
 			alertMsg = "Username already exist!";
 			req.setAttribute("alertMsg", alertMsg);
@@ -64,11 +60,12 @@ public class RegisterController extends HttpServlet {
 			return;
 		}
 
-		boolean isSuccess = service.register(username, password, email);
+		boolean isSuccess = service.register(username, firstName, lastName, gender, password);
 
 		if (isSuccess) {
 //			SendMail sm= new SendMail();
 //			sm.sendMail(email, "UNIFY", "Welcome to UNIFY. Please Login to use service. Thanks !");
+			alertMsg = "Welcome to UNIFY. Please Login to use service. Thanks !";
 			req.setAttribute("alertMsg", alertMsg);
 			resp.sendRedirect(req.getContextPath() + "/login");
 		} else {

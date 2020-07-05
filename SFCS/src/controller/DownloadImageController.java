@@ -27,6 +27,7 @@ public class DownloadImageController extends HttpServlet {
 
 		resp.setContentType("image/jpeg");
 
+		
 		if (file.exists()) {
 			IOUtils.copy(new FileInputStream(file), resp.getOutputStream());
 		}

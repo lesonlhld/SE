@@ -76,7 +76,7 @@ public class LoginController extends HttpServlet {
 	           
 	            resp.sendRedirect(req.getContextPath()+"/waiting");
 	        }else{
-	            alertMsg = "Username or password isn't correct";
+	            alertMsg = "Username or password isn't correct!";
 	            req.setAttribute("alertMsg", alertMsg);
 	            req.getRequestDispatcher("/view/client/view/login.jsp").forward(req, resp);
 	        }
