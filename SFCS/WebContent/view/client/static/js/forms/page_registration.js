@@ -54,25 +54,29 @@ var Registration = function () {
 	                },
 	                email:
 	                {
-	                    required: 'Please enter your email address',
-	                    email: 'Please enter a VALID email address'
+	                    required: 'Vui lòng nhập email!',
+	                    email: 'Vui lòng nhập 1 địa chỉ email hợp lệ!'
+	                },
+	                username:
+	                {
+	                    required: 'Vui lòng nhập tên đăng nhập!',
 	                },
 	                password:
 	                {
-	                    required: 'Please enter your password'
+	                    required: 'Vui lòng nhập mật khẩu!'
 	                },
 	                passwordConfirm:
 	                {
-	                    required: 'Please enter your password one more time',
-	                    equalTo: 'Please enter the same password as above'
+	                    required: 'Vui lòng nhập lại mật khẩu!',
+	                    equalTo: 'Mật khẩu không khớp, xin vui lòng nhập lại!'
 	                },
 	                firstname:
 	                {
-	                    required: 'Please select your first name'
+	                    required: 'Vui lòng nhập họ!'
 	                },
 	                lastname:
 	                {
-	                    required: 'Please select your last name'
+	                    required: 'Vui lòng nhập tên!'
 	                },
 	                terms:
 	                {

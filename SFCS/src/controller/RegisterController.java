@@ -46,15 +46,15 @@ public class RegisterController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
-		String firstName = req.getParameter("firstName");
-		String lastName = req.getParameter("lastName");
+		String firstName = req.getParameter("firstname");
+		String lastName = req.getParameter("lastname");
 		String gender = req.getParameter("gender");
 
 		UserService service = new UserServiceImpl();
 		String alertMsg = "";
 
 		if (service.checkExistUsername(username)) {
-			alertMsg = "Username already exist!";
+			alertMsg = "Tài khoản đã tồn tại!";
 			req.setAttribute("alertMsg", alertMsg);
 			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
 			return;
@@ -63,9 +63,7 @@ public class RegisterController extends HttpServlet {
 		boolean isSuccess = service.register(username, firstName, lastName, gender, password);
 
 		if (isSuccess) {
-//			SendMail sm= new SendMail();
-//			sm.sendMail(email, "UNIFY", "Welcome to UNIFY. Please Login to use service. Thanks !");
-			alertMsg = "Welcome to UNIFY. Please Login to use service. Thanks !";
+			alertMsg = "Chào mừng bạn đến với SFCS. Vui lòng đăng nhập để sử dụng dịch vụ. Xin cảm ơn!";
 			req.setAttribute("alertMsg", alertMsg);
 			resp.sendRedirect(req.getContextPath() + "/login");
 		} else {

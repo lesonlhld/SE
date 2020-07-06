@@ -143,14 +143,14 @@
 									<div class="col-md-6 md-margin-bottom-50">
 										<section>
 											<label class="input"> <input type="text"
-												name="firstName" placeholder="Họ" class="form-control">
+												name="firstname" placeholder="Họ" class="form-control">
 											</label>
 										</section>
 									</div>
 									<div class="col-md-6 md-margin-bottom-50">
 										<section>
 											<label class="input"> <input type="text"
-												name="lastName" placeholder="Tên" class="form-control">
+												name="lastname" placeholder="Tên" class="form-control">
 											</label>
 										</section>
 									</div>

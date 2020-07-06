@@ -129,7 +129,7 @@
 							<div class="row margin-bottom-5">
 								<div class="col-xs-6">
 									<label class="checkbox"> <input type="checkbox"
-										name="checkbox" /> <i></i> Remember me
+										name="remember" /> <i></i> Tự động đăng nhập
 									</label>
 								</div>
 							</div>
