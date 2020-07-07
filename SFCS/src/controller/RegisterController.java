@@ -46,8 +46,8 @@ public class RegisterController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
-		String firstName = req.getParameter("firstname");
-		String lastName = req.getParameter("lastname");
+		String firstname = req.getParameter("firstname");
+		String lastname = req.getParameter("lastname");
 		String gender = req.getParameter("gender");
 		String email = req.getParameter("email");
 		String birthday = req.getParameter("birthday");
@@ -62,7 +62,7 @@ public class RegisterController extends HttpServlet {
 			return;
 		}
 
-		boolean isSuccess = service.register(username, firstName, lastName, email, birthday, gender, password);
+		boolean isSuccess = service.register(username, firstname, lastname, email, birthday, gender, password);
 
 		if (isSuccess) {
 			alertMsg = "Chào mừng bạn đến với SFCS. Vui lòng đăng nhập để sử dụng dịch vụ. Xin cảm ơn!";

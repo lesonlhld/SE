@@ -22,8 +22,8 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 		Connection con = super.getJDBCConnection();
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, user.getFirstName());
-			ps.setString(2, user.getLastName());
+			ps.setString(1, user.getFirstname());
+			ps.setString(2, user.getLastname());
 			ps.setString(3, user.getUsername());
 			ps.setString(4, user.getPassword());
 			ps.setString(5, user.getEmail());
@@ -97,6 +97,12 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 				user.setEmail(rs.getString("email"));
 				user.setUsername(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
+				user.setFirstname(rs.getString("first_name"));
+				user.setLastname(rs.getString("last_name"));
+				user.setAddress(rs.getString("address"));
+				user.setBirthday(rs.getString("birth_date"));
+				user.setPhone(rs.getString("phone"));
+				user.setGender(rs.getString("gender"));
 				user.setAvatar(rs.getString("avatar"));
 				user.setRoleId(Integer.parseInt(rs.getString("role_id")));
 
