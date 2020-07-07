@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class User implements Serializable {
 	private int id;
@@ -11,16 +12,19 @@ public class User implements Serializable {
 	private String password;
 	private String avatar;
 	private String gender;
+	private String birthday;
 	private int roleId;
 	public User() {
 		super();
 	}
-	public User(String username, String firstName, String lastName, String gender, String password) {
+	public User(String username, String firstName, String lastName, String email, String birthday, String gender, String password) {
 		super();
 		this.username = username;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
+		this.email = email;
+		this.birthday = birthday;
 		this.password = password;
 	}
 	public User(int id, String email, String firstName, String lastName, String password, String avatar, int roleId) {
@@ -80,6 +84,12 @@ public class User implements Serializable {
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+	public String getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
 	}
 	public int getRoleId() {
 		return roleId;

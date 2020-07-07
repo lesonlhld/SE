@@ -49,6 +49,8 @@ public class RegisterController extends HttpServlet {
 		String firstName = req.getParameter("firstname");
 		String lastName = req.getParameter("lastname");
 		String gender = req.getParameter("gender");
+		String email = req.getParameter("email");
+		String birthday = req.getParameter("birthday");
 
 		UserService service = new UserServiceImpl();
 		String alertMsg = "";
@@ -60,7 +62,7 @@ public class RegisterController extends HttpServlet {
 			return;
 		}
 
-		boolean isSuccess = service.register(username, firstName, lastName, gender, password);
+		boolean isSuccess = service.register(username, firstName, lastName, email, birthday, gender, password);
 
 		if (isSuccess) {
 			alertMsg = "Chào mừng bạn đến với SFCS. Vui lòng đăng nhập để sử dụng dịch vụ. Xin cảm ơn!";

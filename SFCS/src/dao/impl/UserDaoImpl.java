@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.sql.Date;
+
 import dao.UserDao;
 import jdbc.JDBCConnection;
 import model.User;
@@ -16,7 +18,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 	@Override
 	public void insert(User user) {
 		int roleId=0;
-		String sql = "INSERT INTO users(first_name, last_name, username, password, gender, role_id) VALUES (?,?,?,?,?,?)";
+		String sql = "INSERT INTO users(first_name, last_name, username, password, email, birth_date, gender, role_id) VALUES (?,?,?,?,?,?,?,?)";
 		Connection con = super.getJDBCConnection();
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -24,7 +26,9 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 			ps.setString(2, user.getLastName());
 			ps.setString(3, user.getUsername());
 			ps.setString(4, user.getPassword());
-			ps.setString(5, user.getGender());
+			ps.setString(5, user.getEmail());
+			ps.setDate(6, Date.valueOf(user.getBirthday()));
+			ps.setString(7, user.getGender());
 			try {
 				if(user.getRoleId()==1) {
 					roleId=1;
@@ -35,7 +39,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 			} catch (Exception e) {
 				roleId=2;
 			}
-			ps.setInt(6, roleId);
+			ps.setInt(8, roleId);
 			;
 			ps.executeUpdate();
 		} catch (SQLException e) {
