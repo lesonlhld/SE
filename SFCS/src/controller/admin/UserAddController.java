@@ -26,6 +26,9 @@ public class UserAddController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html; charset=UTF-8");
+		req.setCharacterEncoding("UTF-8");
+		
 		String eString = req.getParameter("e");
 		if (eString != null) {
 			if (eString.equals("1")) {
@@ -38,6 +41,8 @@ public class UserAddController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html; charset=UTF-8");
+		req.setCharacterEncoding("UTF-8");
 
 		User user = new User();
 		DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
@@ -58,6 +63,8 @@ public class UserAddController extends HttpServlet {
 					user.setLastname(item.getString());
 				} else if (item.getFieldName().equals("gender")) {
 					user.setGender(item.getString());
+				} else if (item.getFieldName().equals("birthday")) {
+					user.setBirthday(item.getString());
 				} else if (item.getFieldName().equals("role")) {
 					user.setRoleId(Integer.parseInt(item.getString()));;
 				} else if (item.getFieldName().equals("avatar")) {

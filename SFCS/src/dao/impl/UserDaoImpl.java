@@ -40,7 +40,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 				roleId = 1;
 			}
 			ps.setInt(8, roleId);
-			;
+		
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -206,7 +206,13 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 			while (rs.next()) {
 				User user = new User();
 
-				user.setId(rs.getInt("id"));
+				user.setId(rs.getInt("user_id"));
+				user.setFirstname(rs.getString("first_name"));
+				user.setLastname(rs.getString("last_name"));
+				user.setBirthday(rs.getString("birth_date"));
+				user.setGender(rs.getString("gender"));
+				user.setPhone(rs.getString("phone"));
+				user.setAddress(rs.getString("address"));
 				user.setEmail(rs.getString("email"));
 				user.setUsername(rs.getString("username"));
 				user.setPassword(rs.getString("password"));

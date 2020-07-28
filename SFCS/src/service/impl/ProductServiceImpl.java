@@ -14,7 +14,6 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void insert(Product product) {
 		productDao.insert(product);
-
 	}
 
 	@Override
@@ -23,6 +22,10 @@ public class ProductServiceImpl implements ProductService {
 
 		oldProduct.setName(newProduct.getName());
 		oldProduct.setPrice(newProduct.getPrice());
+		oldProduct.setQuantity(newProduct.getQuantity());
+		oldProduct.setDiscount(newProduct.getDiscount());
+		oldProduct.setStall(newProduct.getStall());
+		oldProduct.setDes(newProduct.getDes()); 
 		oldProduct.setCategory(newProduct.getCategory());
 		if (newProduct.getImage() != null) {
 			// XOA ANH CU DI
@@ -32,7 +35,6 @@ public class ProductServiceImpl implements ProductService {
 			if (file.exists()) {
 				file.delete();
 			}
-
 			oldProduct.setImage(newProduct.getImage());
 		}
 
