@@ -168,7 +168,7 @@
                         <!-- End Khuyến mãi -->
                         
                         <!-- Về chúng tôi -->
-                        <li><a href="${pageContext.request.contextPath }">Giới thiệu</a></li>
+                        <li><a href="#introduce-id">Giới thiệu</a></li>
                         <!-- End Giới thiệu -->
                     </ul>
                     <!-- End Nav Menu -->                    
