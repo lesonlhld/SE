@@ -80,7 +80,7 @@
 				<div class="col-md-9">
 					<div class="row margin-bottom-5">
 						<div class="col-sm-4 result-category">
-							<small class="shop-bg-red badge-results">20 Kết Quả</small>
+							<small class="shop-bg-red badge-results">${productList.size() } Kết Quả</small>
 						</div>
 						<div class="col-sm-8">
 							<ul class="list-inline clear-both">
@@ -166,7 +166,7 @@
 												</li>
 											</ul>
 											<a href="${pageContext.request.contextPath }/product/detail?id=${p.id}" >
-												<button type="button" class="btn-u btn-u-sea-shop">Thêm Vào Giỏ Hàng</button>
+												<button type="button" class="btn-u btn-u-sea-shop">Xem chi tiết</button>
 											</a>
 										</div>
 									</div>
