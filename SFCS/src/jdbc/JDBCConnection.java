@@ -9,12 +9,14 @@ public class JDBCConnection {
 		Connection connection = null;
 		try {
 		    Class.forName("com.mysql.cj.jdbc.Driver");
-		    String hostName = "node235993-leson.j.layershift.co.uk";
+		    String hostName = "localhost";
 		    String dbName = "SFCS";
 		    String userName = "root";
-		    String password = "NLYfsd26975";
-		    //String connectionURL = "jdbc:mysql://" + hostName + ":3306/" + dbName + "?requireSSL=false&useUnicode=true&characterEncoding=UTF-8";
-		    String connectionURL = "jdbc:mysql://" + hostName + "/" + dbName + "?requireSSL=false&useUnicode=true&characterEncoding=UTF-8";
+		    String password = "123456a@";
+		    String connectionURL = "jdbc:mysql://" + hostName + ":3306/" + dbName + "?requireSSL=false&useUnicode=true&characterEncoding=UTF-8";
+		    //String hostName = "node235993-leson.j.layershift.co.uk";
+		    //String password = "NLYfsd26975";
+		    //String connectionURL = "jdbc:mysql://" + hostName + "/" + dbName + "?requireSSL=false&useUnicode=true&characterEncoding=UTF-8";
 			   
 		    connection = DriverManager.getConnection(connectionURL, userName, password);
 			//System.out.println("thanh cong");

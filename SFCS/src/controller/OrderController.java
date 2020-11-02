@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -49,6 +50,7 @@ public class OrderController extends HttpServlet {
 		User buyer = (User) obj;
 		Cart cart = new Cart();
 		cart.setBuyer(buyer);
+		cart.setBuyTime(new java.sql.Time(time));
 		cart.setBuyDate(new java.sql.Date(time));
 		cartService.insert(cart);
 		
@@ -58,8 +60,8 @@ public class OrderController extends HttpServlet {
         long amount = 0;
         
         String orderInfo = "Thanh toán với MoMo";
-        String returnURL = req.getContextPath()+ "/waiting";
-        String notifyURL = req.getContextPath()+ "/waiting";
+        String returnURL = "http://leson.j.layershift.co.uk/";
+        String notifyURL = "http://leson.j.layershift.co.uk/";
         String extraData = "";
         // String bankCode = "SML";
 

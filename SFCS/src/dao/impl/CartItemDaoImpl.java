@@ -40,8 +40,7 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 			ps.setInt(1, cartItem.getCart().getId());
 			ps.setInt(2, cartItem.getProduct().getId());
 			ps.setInt(3, cartItem.getQuantity());
-			ps.setLong(4, cartItem.getUnitPrice());
-			
+			ps.setLong(4, cartItem.getUnitPrice()*(100-cartItem.getProduct().getDiscount())/100);
 			ps.executeUpdate();
 			
 		} catch (SQLException e) {
