@@ -54,12 +54,12 @@ public class OrderController extends HttpServlet {
 		
 		LogUtils.init();
         String requestId = String.valueOf(System.currentTimeMillis());
-        String orderId = "SFCS" + getAlphaNumericString(10);
+        String orderId = "SFCS-" + getAlphaNumericString(10);
         long amount = 0;
         
         String orderInfo = "Thanh toán với MoMo";
-        String returnURL = "http://localhost:8080/SFCS";
-        String notifyURL = "http://localhost:8080/SFCS";
+        String returnURL = req.getContextPath()+ "/waiting";
+        String notifyURL = req.getContextPath()+ "/waiting";
         String extraData = "";
         // String bankCode = "SML";
 
