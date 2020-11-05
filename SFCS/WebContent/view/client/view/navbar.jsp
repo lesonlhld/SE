@@ -13,7 +13,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="${pageContext.request.contextPath }">
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/">
                         <img id="logo-header" src="${url}/img/logo.png" alt="Logo" style="width:120px; height:50px;">
                     </a>
                 </div>

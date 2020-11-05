@@ -9,9 +9,9 @@ public class JDBCConnection {
 		Connection connection = null;
 		try {
 		    Class.forName("com.mysql.cj.jdbc.Driver");
-		    String hostName = "localhost";
 		    String dbName = "SFCS";
 		    String userName = "root";
+		    String hostName = "localhost";
 		    String password = "123456a@";
 		    String connectionURL = "jdbc:mysql://" + hostName + ":3306/" + dbName + "?requireSSL=false&useUnicode=true&characterEncoding=UTF-8";
 		    //String hostName = "node235993-leson.j.layershift.co.uk";

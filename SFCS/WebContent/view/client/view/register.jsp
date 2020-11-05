@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <c:url value="/view/client/static" var="url"></c:url>
-<title>Register</title>
+<title>Đăng ký</title>
 <!-- Favicon -->
 <link rel="shortcut icon" href="favicon.ico">
 
@@ -67,7 +67,7 @@
 		<!--=== Breadcrumbs v4 ===-->
 		<div class="breadcrumbs-v4">
 			<div class="container">
-				<span class="page-name">Đăng nhập</span>
+				<span class="page-name">Đăng ký</span>
 				<h1>
 					<span class="shop-red">SMART FOOD BÁCH KHOA XIN CHÀO</span>
 				</h1>
