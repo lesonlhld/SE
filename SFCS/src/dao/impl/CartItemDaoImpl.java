@@ -50,7 +50,7 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 
 	@Override
 	public void edit(CartItem cartItem) {
-		String sql = "UPDATE order_items SET order_id = ?, product_id = ?, quantity = ?, unit_price = ? WHERE order_item_id = ?";
+		String sql = "UPDATE order_items SET order_id = ?, product_id = ?, quantity = ?, unit_price = ? WHERE order_id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -71,7 +71,7 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 
 	@Override
 	public void delete(String id) {
-		String sql = "DELETE FROM order_items WHERE order_item_id = ?";
+		String sql = "DELETE FROM order_items WHERE order_id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -85,9 +85,9 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 
 	@Override
 	public CartItem get(int id) {
-		String sql = "SELECT oi.order_item_id, oi.quantity, oi.unit_price, o.user_id, o.order_date, o.status, p.name, p.price " 
+		String sql = "SELECT oi.order_id, oi.quantity, oi.unit_price, o.user_id, o.order_date, o.status, p.name, p.price " 
 				+ "FROM order_items oi, orders o, products p "
-				+ "WHERE oi.order_id = o.order_id AND oi.product_id = p.product_id AND oi.order_item_id = ?";
+				+ "WHERE oi.order_id = o.order_id AND oi.product_id = p.product_id AND oi.order_id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -125,7 +125,7 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 	@Override
 	public List<CartItem> getAll() {
 		List<CartItem> cartItemList = new ArrayList<CartItem>();
-		String sql = "SELECT oi.order_item_id, oi.quantity, oi.unit_price, o.user_id, o.order_date, o.status, p.name, p.price " 
+		String sql = "SELECT oi.order_id, oi.quantity, oi.unit_price, o.user_id, o.order_date, o.status, p.name, p.price " 
 				+ "FROM order_items oi, orders o, products p "
 				+ "WHERE oi.order_id = o.order_id AND oi.product_id = p.product_id";
 		Connection con = super.getJDBCConnection();

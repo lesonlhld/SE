@@ -15,7 +15,7 @@ public class StallDaoImpl extends JDBCConnection implements StallDao {
 
 	@Override
 	public void insert(Stall stall) {
-		String sql = "INSERT INTO stalls(name, item, description, image) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO stalls(stall_name, item_quantity, description, image) VALUES (?,?,?,?)";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -32,7 +32,7 @@ public class StallDaoImpl extends JDBCConnection implements StallDao {
 
 	@Override
 	public void edit(Stall stall) {
-		String sql = "UPDATE stalls SET name = ?, item = ?, description = ?, image = ?, WHERE stall_id = ?";
+		String sql = "UPDATE stalls SET stall_name = ?, item_quantity = ?, description = ?, image = ?, WHERE stall_id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -76,8 +76,8 @@ public class StallDaoImpl extends JDBCConnection implements StallDao {
 				Stall stall = new Stall();
 
 				stall.setId(rs.getInt("stall_id"));
-				stall.setName(rs.getString("name"));
-				stall.setItem(rs.getInt("item"));
+				stall.setName(rs.getString("stall_name"));
+				stall.setItem(rs.getInt("item_quantity"));
 				stall.setDes(rs.getString("description"));
 				stall.setImage(rs.getString("image"));
 				
@@ -104,8 +104,8 @@ public class StallDaoImpl extends JDBCConnection implements StallDao {
 				Stall stall = new Stall();
 
 				stall.setId(rs.getInt("stall_id"));
-				stall.setName(rs.getString("name"));
-				stall.setItem(rs.getInt("item"));
+				stall.setName(rs.getString("stall_name"));
+				stall.setItem(rs.getInt("item_quantity"));
 				stall.setDes(rs.getString("description"));
 				stall.setImage(rs.getString("image"));
 
@@ -122,7 +122,7 @@ public class StallDaoImpl extends JDBCConnection implements StallDao {
 	@Override
 	public List<Stall> search(String keyword) {
 		List<Stall> stalls = new ArrayList<Stall>();
-		String sql = "SELECT * FROM stalls WHERE name LIKE ?";
+		String sql = "SELECT * FROM stalls WHERE stall_name LIKE ?";
 		Connection conn = super.getJDBCConnection();
 
 		try {
@@ -134,8 +134,8 @@ public class StallDaoImpl extends JDBCConnection implements StallDao {
 				Stall stall = new Stall();
 
 				stall.setId(rs.getInt("stall_id"));
-				stall.setName(rs.getString("name"));
-				stall.setItem(rs.getInt("item"));
+				stall.setName(rs.getString("stall_name"));
+				stall.setItem(rs.getInt("item_quantity"));
 				stall.setDes(rs.getString("description"));
 				stall.setImage(rs.getString("image"));
 
@@ -151,7 +151,7 @@ public class StallDaoImpl extends JDBCConnection implements StallDao {
 
 	@Override
 	public Stall get(String name) {
-		String sql = "SELECT * FROM stalls WHERE name LIKE ?";
+		String sql = "SELECT * FROM stalls WHERE stall_name LIKE ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -163,8 +163,8 @@ public class StallDaoImpl extends JDBCConnection implements StallDao {
 				Stall stall = new Stall();
 
 				stall.setId(rs.getInt("stall_id"));
-				stall.setName(rs.getString("name"));
-				stall.setItem(rs.getInt("item"));
+				stall.setName(rs.getString("stall_name"));
+				stall.setItem(rs.getInt("item_quantity"));
 				stall.setDes(rs.getString("description"));
 				stall.setImage(rs.getString("image"));
 				
