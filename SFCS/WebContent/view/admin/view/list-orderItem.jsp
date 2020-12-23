@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Invoice Management</title>
+<title>Order Management</title>
 <!-- BOOTSTRAP STYLES-->
 <link href="${url}/css/bootstrap.css" rel="stylesheet" />
 <!-- FONTAWESOME STYLES-->
@@ -35,7 +35,7 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-md-12">
-						<h2>Invoice Management</h2>
+						<h2>Order Management</h2>
 					</div>
 				</div>
 				<!-- /. ROW  -->
@@ -53,29 +53,31 @@
 										<thead>
 											<tr>
 												<th>Index</th>
-												<th>Invoice ID</th>
+												<th>Order ID</th>
 												<th>Buyer</th>
-												<th>Invoice Date</th>
-												<th>Invoice Time</th>
-												<th>Voucher</th>
-												<th>Total Money</th>
-												<th>Payment Method</th>
-												<th>Action</th>
+												<th>Order Date</th>
+												<th>Order Time</th>
+												<th>Product</th>
+												<th>Quantity</th>
+												<th>Price</th>
+												<th>Sum</th>
+												<th>Action></th>
 											</tr>
 										</thead>
 										<tbody>
 											<c:set var="index" value="${0}" />
-											<c:forEach items="${listInvoice }" var="list">
+											<c:forEach items="${listCartItem }" var="list">
 												<tr class="odd gradeX">
 													<c:set var="index" value="${index + 1}" />
 													<td>${index }</td>
-													<td>${list.id }</td>
+													<td>${list.cart.id }</td>
 													<td>${list.cart.buyer.username }</td>
-													<td>${list.invoiceDate }</td>
-													<td>${list.invoiceTime }</td>
-													<td>${list.voucher }</td>
-													<td>${list.totalMoney }</td>
-													<td>${list.paymentMethod.name }</td>
+													<td>${list.cart.buyDate }</td>
+													<td>${list.cart.buyTime }</td>
+													<td>${list.product.name }</td>
+													<td>${list.quantity }</td>
+													<td>${list.unitPrice }</td>
+													<td>${list.quantity * list.unitPrice }</td>
 													<td>
 														<a href="<c:url value='/admin/orderItem/order?id=${list.cart.id }'/>" class="center">View Order</a>
 													</td>

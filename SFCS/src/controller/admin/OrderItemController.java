@@ -22,15 +22,15 @@ import service.UserService;
 import service.impl.CartServiceImpl;
 import service.impl.CartServiceItemImpl;
 import service.impl.UserServiceImpl;
-@WebServlet(urlPatterns= {"/admin/orderItem/list"})
-public class OrderItemListController extends HttpServlet {
+@WebServlet(urlPatterns= {"/admin/orderItem/order"})
+public class OrderItemController extends HttpServlet {
 	CartItemService cartItemService=new CartServiceItemImpl();
-	CartService cartService=new CartServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	List<CartItem> listCartItem =cartItemService.getAll();
-	req.setAttribute("listCartItem", listCartItem);
-	RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/view/list-orderItem.jsp");
+	String id = req.getParameter("id");
+	List<CartItem> cartItem =cartItemService.get(Integer.parseInt(id));
+	req.setAttribute("cartItem", cartItem);
+	RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/view/orderItem.jsp");
 	dispatcher.forward(req, resp);
 	}
 	

@@ -68,14 +68,22 @@
 											<div class="form-group">
 												<label>Gender:</label>
 												<div class="checkbox">
-													<label> <input type="radio" value="M" name="gender" checked="checked"/>Male</label> 
+													<label> <input type="radio" value="M" name="gender"/>Male</label> 
 													<br> <label> <input type="radio" value="F" name="gender"/>Female</label>
 												</div>
 											</div>
 											<div class="form-group">
 												<label>Email:</label> <input class="form-control"
 													placeholder="Please enter email" name="email" />
-											</div>											
+											</div>
+											<div class="form-group">
+												<label>Phone:</label> <input class="form-control"
+													placeholder="Please enter phone number" name="phone" />
+											</div>
+											<div class="form-group">
+												<label>Address:</label> <input class="form-control"
+													placeholder="Please enter address" name="address" />
+											</div>									
 											<div class="form-group">
 												<label>Role:</label>
 												<div class="checkbox">

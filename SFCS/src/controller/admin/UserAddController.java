@@ -72,19 +72,23 @@ public class UserAddController extends HttpServlet {
 				} else if (item.getFieldName().equals("role")) {
 					user.setRoleId(Integer.parseInt(item.getString()));
 				} else if (item.getFieldName().equals("avatar")) {
-					String root = System.getProperty("user.home");
-					File path = new File(root + "/uploads");
-					if (!path.exists()) {
-						path.mkdirs();
-					}
-					String originalFileName = item.getName();
-					int index = originalFileName.lastIndexOf(".");
-					String ext = originalFileName.substring(index + 1);
-					String fileName = System.currentTimeMillis() + "." + ext;
-					File file = new File(path + "/" + fileName);
-					item.write(file);
+					if (item.getSize() > 0) {
+						String root = System.getProperty("user.home");
+						File path = new File(root + "/uploads");
+						if (!path.exists()) {
+							path.mkdirs();
+						}
+						String originalFileName = item.getName();
+						int index = originalFileName.lastIndexOf(".");
+						String ext = originalFileName.substring(index + 1);
+						String fileName = System.currentTimeMillis() + "." + ext;
+						File file = new File(path + "/" + fileName);
+						item.write(file);
 
-					user.setAvatar(fileName);
+						user.setAvatar(fileName);
+					} else {
+						user.setAvatar(null);
+					}
 				}
 			}
 
