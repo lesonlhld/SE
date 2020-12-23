@@ -17,22 +17,29 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import model.User;
+import model.Role;
 import service.UserService;
 import service.impl.UserServiceImpl;
+import service.RoleService;
+import service.impl.RoleServiceImpl;
 
 @WebServlet(urlPatterns = { "/admin/user/add" })
 public class UserAddController extends HttpServlet {
 	UserService userService = new UserServiceImpl();
+	RoleService roleService = new RoleServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html; charset=UTF-8");
 		req.setCharacterEncoding("UTF-8");
+
+		List<Role> roleList = roleService.getAll();
+		req.setAttribute("roleList", roleList);
 		
 		String eString = req.getParameter("e");
 		if (eString != null) {
 			if (eString.equals("1")) {
-				req.setAttribute("errMsg", "Username da ton tai!!!");
+				req.setAttribute("errMsg", "Lỗi!!!");
 			}
 		}
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/view/add-user.jsp");
