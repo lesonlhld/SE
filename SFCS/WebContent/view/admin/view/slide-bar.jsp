@@ -25,6 +25,8 @@
 							class="fa fa-indent fa-3x"></i>Category Management</a></li>
 					<li><a href="${pageContext.request.contextPath }/admin/payment/list"><i
 							class="fa fa-money fa-3x"></i>Payment Management</a></li>
+					<li><a href="${pageContext.request.contextPath }/admin/role/list"><i
+							class="fa fa-cogs fa-3x"></i>Role Management</a></li>
 				</ul>
 			</div>
 
