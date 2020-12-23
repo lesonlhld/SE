@@ -46,7 +46,7 @@ CREATE TABLE SFCS.users (
 	address varchar(2000) DEFAULT NULL,
 	username varchar(50) NOT NULL,
 	password varchar(50) NOT NULL,
-	avatar mediumblob DEFAULT NULL,
+	avatar varchar(50) DEFAULT NULL,
 	role_id int NOT NULL DEFAULT '1', /* customer */
 	balance int DEFAULT '0',
 	PRIMARY KEY (user_id),
