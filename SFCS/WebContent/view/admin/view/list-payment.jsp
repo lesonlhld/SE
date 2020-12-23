@@ -5,23 +5,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="<c:url value="/ckeditor/ckeditor.js" />"></script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Edit Category</title>
+<title>Payment Management</title>
 <!-- BOOTSTRAP STYLES-->
 <link href="${url}/css/bootstrap.css" rel="stylesheet" />
 <!-- FONTAWESOME STYLES-->
 <link href="${url}/css/font-awesome.css" rel="stylesheet" />
+<!-- MORRIS CHART STYLES-->
+
 <!-- CUSTOM STYLES-->
 <link href="${url}/css/custom.css" rel="stylesheet" />
 <!-- GOOGLE FONTS-->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans'
 	rel='stylesheet' type='text/css' />
+<!-- TABLE STYLES-->
+<link href="${url}/js/dataTables/dataTables.bootstrap.css"
+	rel="stylesheet" />
 </head>
 <body>
 	<div id="wrapper">
+
 		<jsp:include page="/view/admin/view/nav-bar.jsp"></jsp:include>
+
 		<!-- /. NAV TOP  -->
 		<jsp:include page="/view/admin/view/slide-bar.jsp"></jsp:include>
 		<!-- /. NAV SIDE  -->
@@ -29,47 +35,58 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-md-12">
-						<h2>Edit Category</h2>
+						<h2>All Payments</h2>
+						<button onclick="location.href='${pageContext.request.contextPath }/admin/payment/add'" type="button">
+         				Add New Payment</button>
 					</div>
 				</div>
 				<!-- /. ROW  -->
 				<hr />
+
 				<div class="row">
 					<div class="col-md-12">
-						<!-- Form Elements -->
+						<!-- Advanced Tables -->
 						<div class="panel panel-default">
-							<div class="panel-heading">Edit Category</div>
+							<div class="panel-heading">Advanced Tables</div>
 							<div class="panel-body">
-								<div class="row">
-									<div class="col-md-6">
-										<h3>Category:</h3>
-										<c:url value="/admin/category/edit" var="edit"></c:url>
-										<form role="form" action="${edit }" method="post" enctype="multipart/form-data">
-											<input name="id" value="${category.id }" type="text" hidden="">
-											<div class="form-group">
-												<label>Category Name:</label> <input class="form-control"
-													value="${category.name }" name="name" />
-											</div>																				
-											<button type="submit" class="btn btn-default">Edit</button>
-											<button type="reset" class="btn btn-primary">Reset</button>
-										</form>
-									</div>
+								<div class="table-responsive">
+									<table class="table table-striped table-bordered table-hover"
+										id="dataTables-example">
+										<thead>
+											<tr>
+												<th>Payment ID</th>
+												<th>Payment Name</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:set var="index" value="${0}" />
+											<c:forEach items="${paymentList }" var="list">
+												<tr class="odd gradeX">
+													<td>${list.id }</td>
+													<td>${list.name }</td>
+													<td>
+														<a href="<c:url value='/admin/payment/edit?id=${list.id }'/>" class="center">Edit</a> | 
+														<a href="<c:url value='/admin/payment/delete?id=${list.id }'/>" class="center">Delete</a>
+													</td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
 								</div>
+
 							</div>
 						</div>
-						<!-- End Form Elements -->
+						<!--End Advanced Tables -->
 					</div>
 				</div>
-				<!-- /. ROW  -->
-				<div class="row">
-					<div class="col-md-12"></div>
-				</div>
-				<!-- /. ROW  -->
+
 			</div>
-			<!-- /. PAGE INNER  -->
+
 		</div>
-		<!-- /. PAGE WRAPPER  -->
+		<!-- /. PAGE INNER  -->
 	</div>
+	<!-- /. PAGE WRAPPER  -->
 	<!-- /. WRAPPER  -->
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
@@ -78,6 +95,14 @@
 	<script src="${url}/js/bootstrap.min.js"></script>
 	<!-- METISMENU SCRIPTS -->
 	<script src="${url}/js/jquery.metisMenu.js"></script>
+	<!-- DATA TABLE SCRIPTS -->
+	<script src="${url}/js/dataTables/jquery.dataTables.js"></script>
+	<script src="${url}/js/dataTables/dataTables.bootstrap.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#dataTables-example').dataTable();
+		});
+	</script>
 	<!-- CUSTOM SCRIPTS -->
 	<script src="${url}/js/custom.js"></script>
 

@@ -16,17 +16,13 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import model.Category;
 import model.Payment;
-import model.User;
-import service.CategoryService;
-import service.UserService;
-import service.impl.CategoryServiceImpl;
-import service.impl.UserServiceImpl;
+import service.PaymentService;
+import service.impl.PaymentServiceImpl;
 
-@WebServlet(urlPatterns = { "/admin/category/edit" })
-public class CategoryEditController extends HttpServlet {
-	CategoryService cateService = new CategoryServiceImpl();
+@WebServlet(urlPatterns = { "/admin/payment/edit" })
+public class PaymentEditController extends HttpServlet {
+	PaymentService paymentService = new PaymentServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,11 +30,11 @@ public class CategoryEditController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		
 		String id = req.getParameter("id");
-		Category category = cateService.get(Integer.parseInt(id));
+		Payment payment = paymentService.get(Integer.parseInt(id));
 		
-		req.setAttribute("category", category);
+		req.setAttribute("payment", payment);
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/view/edit-category.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/view/edit-payment.jsp");
 		dispatcher.forward(req, resp);
 	}
 
@@ -47,7 +43,7 @@ public class CategoryEditController extends HttpServlet {
 		resp.setContentType("text/html; charset=UTF-8");
 		req.setCharacterEncoding("UTF-8");
 
-		Category category = new Category();
+		Payment payment = new Payment();
 		DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
 		ServletFileUpload servletFileUpload = new ServletFileUpload(diskFileItemFactory);
 		
@@ -56,20 +52,21 @@ public class CategoryEditController extends HttpServlet {
 
 			for (FileItem item : items) {
 				if (item.getFieldName().equals("id")) {
-					category.setId(Integer.parseInt(item.getString()));
+					payment.setId(Integer.parseInt(item.getString()));
 				} else if (item.getFieldName().equals("name")) {
-					category.setName(item.getString("UTF-8"));
+					payment.setName(item.getString("UTF-8"));
 				}		
 			}
 
-			cateService.edit(category);
+			paymentService.edit(payment);
 
-			resp.sendRedirect(req.getContextPath() + "/admin/category/list");
+			resp.sendRedirect(req.getContextPath() + "/admin/payment/list");
 		} catch (FileUploadException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 
 	}
 }
