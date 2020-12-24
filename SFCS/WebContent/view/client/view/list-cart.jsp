@@ -187,7 +187,7 @@
 										<div>						
 											<c:choose>
 												<c:when test="${total == '0'}">
-													<button class="btn-u btn-u-sea-shop btn-block" onclick="testAlertDialog()">Thanh Toán</button>
+													<button class="btn-u btn-u-sea-shop btn-block" disabled">Thanh Toán</button>
 												</c:when>
 												<c:otherwise>
 												<a href="${pageContext.request.contextPath}/member/order"

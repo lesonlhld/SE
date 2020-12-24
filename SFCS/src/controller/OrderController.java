@@ -74,8 +74,8 @@ public class OrderController extends HttpServlet {
         long amount = 0;
         
         String orderInfo = "Thanh toán với MoMo";
-        String returnURL = "http://localhost:9090/SFCS";
-        String notifyURL = "http://localhost:9090/SFCS";
+        String returnURL = req.getContextPath();
+        String notifyURL = req.getContextPath();
         String extraData = "";
         // String bankCode = "SML";
 

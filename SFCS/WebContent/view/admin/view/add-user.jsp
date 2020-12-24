@@ -28,7 +28,7 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-md-12">
-						<h2>Edit User</h2>
+						<h2>Add User</h2>
 						<h5>You can edit info user in here</h5>
 					</div>
 				</div>
