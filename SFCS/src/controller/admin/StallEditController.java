@@ -49,7 +49,7 @@ public class StallEditController extends HttpServlet {
 		Stall stall = new Stall();
 		DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
 		ServletFileUpload servletFileUpload = new ServletFileUpload(diskFileItemFactory);
-
+		
 		try {
 			List<FileItem> items = servletFileUpload.parseRequest(req);
 
@@ -59,7 +59,7 @@ public class StallEditController extends HttpServlet {
 				} else if (item.getFieldName().equals("name")) {
 					stall.setName(item.getString("UTF-8"));
 				} else if (item.getFieldName().equals("item")) {
-						stall.setId(Integer.parseInt(item.getString()));
+					stall.setItem(Integer.parseInt(item.getString()));
 				} else if (item.getFieldName().equals("des")) {
 					stall.setDes(item.getString("UTF-8"));				
 				} else if (item.getFieldName().equals("image")) {
