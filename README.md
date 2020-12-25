@@ -27,3 +27,5 @@ Hướng dẫn config:
 * Đây chỉ là hướng dẫn cơ bản, có thể khác nhau trong các phiên bản khác nhau
 
 * Liên hệ email lesonlhld@gmail.com để được hướng dẫn chi tiết hơn
+
+* Tomcat có hỗ trợ share trong lan, bạn chỉ cần xác định ip của máy chạy server (có thể cần sửa firewall hoặc một số thiết lập khác). Ví dụ 192.168.8.108 bằng lệnh ipconfig trong cmd. Sau đó ở các máy khác trong cùng 1 mạng lan, truy cập vào website thông qua địa chỉ http://192.168.8.108:9090/SFCS
