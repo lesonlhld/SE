@@ -1,6 +1,6 @@
-Sofware Engineering
+# Smart Food Court System Website
 
-Smart Food Court System Website
+Sofware Engineering
 
 Java Servlet and MySQL
 
@@ -24,5 +24,6 @@ Hướng dẫn config:
 
 9. Truy cập vào trang web qua địa chỉ http://localhost:9090/SFCS
 
-# Đây chỉ là hướng dẫn cơ bản, có thể khác nhau trong các phiên bản khác nhau
-# Liên hệ email lesonlhld@gmail.com để được hướng dẫn chi tiết hơn
+* Đây chỉ là hướng dẫn cơ bản, có thể khác nhau trong các phiên bản khác nhau
+
+* Liên hệ email lesonlhld@gmail.com để được hướng dẫn chi tiết hơn
