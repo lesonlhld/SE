@@ -9,7 +9,7 @@
 </script>
 <f:setLocale value="vi_VN"/>
 <ul class="list-inline shop-badge badge-lists badge-icons pull-right">
-	<li><a href="#"><i class="fa fa-shopping-cart"></i></a> 
+	<li><a href="${pageContext.request.contextPath}/member/cart" ><i class="fa fa-shopping-cart"></i></a> 
 		<c:set var="count" value="${0}" />
 		<c:forEach items="${sessionScope.cart}" var="map">
 			<c:set var="count" value="${count + map.value.quantity}" />

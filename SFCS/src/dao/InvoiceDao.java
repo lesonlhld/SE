@@ -15,6 +15,8 @@ public interface InvoiceDao {
 
 	Invoice get(int id);
 
+	List<Invoice> getByUser(int id);
+	
 	List<Invoice> getAll();
 
 	List<Invoice> search(String name);

@@ -12,7 +12,9 @@ public interface InvoiceService {
 	void delete(int id);
 
 	Invoice get(int id);
-	
+
+	List<Invoice> getByUser(int id);
+
 	List<Invoice> getAll();
 
 	List<Invoice> search(String keyword);

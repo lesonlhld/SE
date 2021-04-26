@@ -1,16 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <c:url value="/view/client/static" var="url"></c:url>
 <meta charset="UTF-8">
-<title>Đăng nhập</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-
+<title>Lịch sử hóa đơn</title>
 <!-- Favicon -->
 <link rel="shortcut icon" href="favicon.ico">
 
@@ -33,10 +29,9 @@
 <link rel="stylesheet"
 	href="${url}/plugins/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet"
+	href="${url}/plugins/noUiSlider/jquery.nouislider.min.css">
+<link rel="stylesheet"
 	href="${url}/plugins/scrollbar/css/jquery.mCustomScrollbar.css">
-
-<!-- CSS Page Style -->
-<link rel="stylesheet" href="${url}/css/pages/log-reg-v3.css">
 
 <!-- Style Switcher -->
 <link rel="stylesheet" href="${url}/css/plugins/style-switcher.css">
@@ -55,7 +50,6 @@
 		<div class="header-v5 header-${url}">
 			<!-- Topbar v3 -->
 			<%-- <jsp:include page="topbar.jsp"></jsp:include> --%>
-
 			<!-- End Topbar v3 -->
 
 			<!-- Navbar -->
@@ -67,71 +61,62 @@
 		<!--=== Breadcrumbs v4 ===-->
 		<div class="breadcrumbs-v4">
 			<div class="container">
-				<span class="page-name">Đăng nhập</span>
-				<h1>
-					<span class="shop-red">SMART FOOD BÁCH KHOA XIN CHÀO</span>
-				</h1>
+				<span class="page-name">Lịch sử hóa đơn</span>
+				<h1>TẬN HƯỞNG CÙNG <span class="shop-red">SFCS</span></h1>
 				<ul class="breadcrumb-v4-in">
-					<li><a href="/welcome">Trang chủ</a></li>
-					<li class="active">Đăng nhập</li>
+					<li><a href="${pageContext.request.contextPath }">Trang Chủ</a></li>
+					<li class="active">Lịch sử hóa đơn</li>
 				</ul>
 			</div>
 			<!--/end container-->
 		</div>
 		<!--=== End Breadcrumbs v4 ===-->
 
-		<!--=== Login ===-->
-		<div class="log-reg-v3 content-md">
+
+		<!--=== Information ===-->
+		
+		<div class="content-md margin-bottom-30">
 			<div class="container">
-				<div class="row_new">
-					<div>
-						<form id="sky-form1" class="log-reg-block sky-form" action="login"
-							method="post">
-							<h2>ĐĂNG NHẬP</h2>
-							<h3 style="color: red;"> ${alertMsg}</h3>
-
-							<section>
-								<label class="input login-input">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-user"></i></span>
-										<input type="text" placeholder="Tên đăng nhập" name="username"
-											class="form-control">
-									</div>
-								</label>
-							</section>
-							<section>
-								<label class="input login-input no-border-top">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-										<input type="password" placeholder="Mật khẩu" name="password"
-											class="form-control">
-									</div>
-								</label>
-							</section>
-							<div class="row margin-bottom-5">
-								<div class="col-xs-6">
-									<label class="checkbox"> <input type="checkbox"
-										name="remember" /> <i></i> Tự động đăng nhập
-									</label>
-								</div>
-							</div>
-							<button class="btn-u btn-u-sea-shop btn-block margin-bottom-20"
-								type="submit">Đăng nhập</button>
-						</form>
-
-						<div class="margin-bottom-20"></div>
-						<p class="text-center">
-							Chưa có tài khoản? <a
-								href="${pageContext.request.contextPath }/register">Đăng ký</a>
-						</p>
-					</div>
+				<form class="shopping-cart" action="#">
+					<div><div class="header-tags">
+						<div class="overflow-h">
+							<h2>Lịch sử hóa đơn</h2>
+					</div></div>
+					<section>
+						<div class="table-responsive">
+							<table class="table table-striped table-bordered table-hover">
+								<thead><tr>
+									<th>Số thứ tự</th>
+									<th>Mã hóa đơn</th>
+									<th>Ngày tạo hóa đơn</th>
+									<th>Thơi gian tạo hóa đơn</th>
+									<th>Mã giảm giá</th>
+									<th>Tổng tiền</th>
+									<th>Phương thức thanh toán</th>
+								</tr></thead>
+							<tbody>
+							<c:set var="index" value="${0}" />
+							<c:forEach items="${listInvoice }" var="list">
+								<tr class="odd gradeX">
+									<c:set var="index" value="${index + 1}" />
+									<td>${index }</td>
+									<td>${list.id }</td>
+									<td>${list.invoiceDate }</td>
+									<td>${list.invoiceTime }</td>
+									<td>${list.voucher }</td>
+									<td>${list.totalMoney }</td>
+									<td>${list.paymentMethod.name }</td>
+								</tr>
+							</c:forEach>
+							</tbody>
+							</table>
+						</div>
+					</section>	
 				</div>
-				<!--/end row-->
-			</div>
-			<!--/end container-->
+			</form>
 		</div>
-		<!--=== End Login ===-->
-
+		<!--/end container-->
+	</div>
 		<!--=== Footer v4 ===-->
 		<jsp:include page="footer.jsp"></jsp:include>
 		<!--=== End Footer v4 ===-->
@@ -145,31 +130,25 @@
 	<!-- JS Implementing Plugins -->
 	<script src="${url}/plugins/back-to-top.js"></script>
 	<script src="${url}/plugins/smoothScroll.js"></script>
+	<script src="${url}/plugins/noUiSlider/jquery.nouislider.all.min.js"></script>
 	<script
 		src="${url}/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script
-		src="${url}/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js"></script>
-	<script
-		src="${url}/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
 	<!-- JS Customization -->
 	<script src="${url}/js/custom.js"></script>
 	<!-- JS Page Level -->
 	<script src="${url}/js/shop.app.js"></script>
-	<script src="${url}/js/forms/page_login.js"></script>
-	<script src="${url}/js/forms/page_contact_form.js"></script>
+	<script src="${url}/js/plugins/mouse-wheel.js"></script>
 	<script>
 		jQuery(document).ready(function() {
 			App.init();
-			Login.initLogin();
 			App.initScrollBar();
-			PageContactForm.initPageContactForm();
+			MouseWheel.initMouseWheel();
 		});
 	</script>
 	<!--[if lt IE 9]>
     <script src="${url}/plugins/respond.js"></script>
     <script src="${url}/plugins/html5shiv.js"></script>
     <script src="${url}/js/plugins/placeholder-IE-fixes.js"></script>    
-    <script src="${url}/plugins/sky-forms-pro/skyforms/js/sky-forms-ie8.js"></script>
 <![endif]-->
 	<!--[if lt IE 10]>
     <script src="${url}/plugins/sky-forms-pro/skyforms/js/jquery.placeholder.min.js"></script>

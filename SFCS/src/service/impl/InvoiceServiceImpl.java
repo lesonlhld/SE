@@ -37,7 +37,12 @@ public class InvoiceServiceImpl implements InvoiceService {
 	public Invoice get(int id) {
 		return invoiceDao.get(id);
 	}
-	
+
+	@Override
+	public List<Invoice> getByUser(int id) {
+		return invoiceDao.getByUser(id);
+	}
+
 	@Override
 	public List<Invoice> getAll() {
 		return invoiceDao.getAll();

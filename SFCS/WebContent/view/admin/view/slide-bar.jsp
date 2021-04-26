@@ -14,11 +14,11 @@
 					<li><a href="${pageContext.request.contextPath }/admin/product/list"><i class="fa fa-cutlery fa-3x"></i>
 							Product Management</a></li>
 					<li><a href="${pageContext.request.contextPath }/admin/orderItem/list"><i
-							class="fa fa-shopping-cart fa-3x"></i>Order Management</a></li>
+							class="fa fa-shopping-cart fa-3x"></i>Detail Order Management</a></li>
 					<li><a href="${pageContext.request.contextPath }/admin/order/list"><i
-							class="fa fa-list-ol fa-3x"></i> Order List Management</a></li>
+							class="fa fa-list-ol fa-3x"></i> Order Management</a></li>
 					<li><a href="${pageContext.request.contextPath }/admin/invoice/list"><i
-							class="fa fa-bar-chart-o fa-3x"></i> Invoice List Management</a></li>
+							class="fa fa-bar-chart-o fa-3x"></i> Invoice Management</a></li>
 					<li><a href="${pageContext.request.contextPath }/admin/stall/list"><i
 							class="fa fa-users fa-3x"></i>Stall Management</a></li>
 					<li><a href="${pageContext.request.contextPath }/admin/category/list"><i

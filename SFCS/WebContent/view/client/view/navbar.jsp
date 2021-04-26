@@ -20,9 +20,18 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-responsive-collapse">
-                    <!-- Shopping Cart -->
-                   <jsp:include page="/view/client/view/cart.jsp"></jsp:include>
-                    <!-- End Shopping Cart -->
+					<c:choose>
+						<c:when test="${sessionScope.account != null}">
+							<jsp:include page="/view/client/view/user.jsp"></jsp:include>
+                   			<jsp:include page="/view/client/view/cart.jsp"></jsp:include>
+						</c:when>
+						<c:otherwise>
+							<ul class="nav navbar-nav  pull-right">
+								<li><a href="${pageContext.request.contextPath }/login">Đăng nhập</a></li>
+								<li> <a href="${pageContext.request.contextPath }/register">Đăng ký</a></li>
+							</ul>
+						</c:otherwise>
+					</c:choose>
 
                     <!-- Nav Menu -->
                     <ul class="nav navbar-nav">

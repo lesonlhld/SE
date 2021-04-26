@@ -2,6 +2,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<!--=== Shop Subscribe ===-->
+	<div class="shop-subscribe">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 md-margin-bottom-20">
+					<h2>đăng ký để nhận <strong>bản tin hàng tuần</strong> của chúng tôi</h2>
+				</div>
+				<div class="col-md-4">
+					<div class="input-group">
+						<input type="text" class="form-control"
+							placeholder="Nhập địa chỉ email..."> <span
+							class="input-group-btn">
+							<button class="btn" type="button">
+								<i class="fa fa-envelope-o"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/end container-->
+	</div>
+	<!--=== End Shop Subscribe ===-->
+
+
 <div class="footer-v4">
 	<div class="footer" id="introduce-id">
 		<div class="container">

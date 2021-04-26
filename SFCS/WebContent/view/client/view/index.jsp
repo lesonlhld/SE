@@ -42,13 +42,14 @@
 <body class="header-fixed">
 	<div class="wrapper">
 		<!--=== Header v5 ===-->
-		<div class="header-v5 header-static">
+		<div class="header-v5 header-${url}">
 			<!-- Topbar v3 -->
-			<jsp:include page="/view/client/view/topbar.jsp"></jsp:include>
+			<%-- <jsp:include page="topbar.jsp"></jsp:include> --%>
+
 			<!-- End Topbar v3 -->
 
 			<!-- Navbar -->
-			<jsp:include page="/view/client/view/navbar.jsp"></jsp:include>
+			<jsp:include page="navbar.jsp"></jsp:include>
 			<!-- End Navbar -->
 		</div>
 		<!--=== End Header v5 ===-->
@@ -582,31 +583,6 @@
 			</div>
 		</div>
 		<!--=== End Collection Banner ===-->
-
-		
-		<!--=== Shop Suvbscribe ===-->
-		<div class="shop-subscribe">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 md-margin-bottom-20">
-						<h2>đăng ký để nhận <strong>bản tin hàng tuần</strong> của chúng tôi</h2>
-					</div>
-					<div class="col-md-4">
-						<div class="input-group">
-							<input type="text" class="form-control"
-								placeholder="Nhập địa chỉ email..."> <span
-								class="input-group-btn">
-								<button class="btn" type="button">
-									<i class="fa fa-envelope-o"></i>
-								</button>
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--/end container-->
-		</div>
-		<!--=== End Shop Subscribe ===-->
 
 		<!--=== Footer v4 ===-->
 		<jsp:include page="/view/client/view/footer.jsp"></jsp:include>

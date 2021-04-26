@@ -114,6 +114,41 @@ public class InvoiceDaoImpl extends JDBCConnection implements InvoiceDao {
 	}
 
 	@Override
+	public List<Invoice> getByUser(int id) {
+		List<Invoice> invoiceList = new ArrayList<Invoice>();
+		String sql = "SELECT i.invoice_id, i.order_id, i.invoice_date, i.invoice_time, "
+				+ "i.invoice_total, i.payment_id, o.order_status_id FROM invoices i, orders o "
+				+ "WHERE i.order_id=o.order_id and o.user_id = ?";
+		Connection con = super.getJDBCConnection();
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Cart cart = cartS.get(rs.getInt("order_id"));
+				Payment payment = paymentS.get(rs.getInt("payment_id"));
+
+				Invoice invoice = new Invoice();
+				invoice.setId(rs.getInt("invoice_id"));
+				invoice.setTotalMoney(rs.getLong("invoice_total"));
+				invoice.setInvoiceTime(rs.getTime("invoice_time"));
+				invoice.setInvoiceDate(rs.getDate("invoice_date"));
+				invoice.setPaymentMethod(payment);;
+				invoice.setCart(cart);
+
+				invoiceList.add(invoice);
+
+			}
+			return invoiceList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
 	public List<Invoice> getAll() {
 		List<Invoice> invoiceList = new ArrayList<Invoice>();
 		String sql = "SELECT* "
